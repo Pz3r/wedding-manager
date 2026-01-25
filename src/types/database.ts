@@ -19,6 +19,7 @@ export interface Database {
           email: string;
           phone: string | null;
           group_name: string | null;
+          expected_attendees: number;
           created_at: string;
         };
         Insert: {
@@ -28,6 +29,7 @@ export interface Database {
           email: string;
           phone?: string | null;
           group_name?: string | null;
+          expected_attendees?: number;
           created_at?: string;
         };
         Update: {
@@ -37,6 +39,7 @@ export interface Database {
           email?: string;
           phone?: string | null;
           group_name?: string | null;
+          expected_attendees?: number;
           created_at?: string;
         };
         Relationships: [
@@ -93,6 +96,7 @@ export interface Database {
           party_size: number;
           dietary_restrictions: string | null;
           message: string | null;
+          notes: string | null;
           responded_at: string;
         };
         Insert: {
@@ -102,6 +106,7 @@ export interface Database {
           party_size?: number;
           dietary_restrictions?: string | null;
           message?: string | null;
+          notes?: string | null;
           responded_at?: string;
         };
         Update: {
@@ -111,6 +116,7 @@ export interface Database {
           party_size?: number;
           dietary_restrictions?: string | null;
           message?: string | null;
+          notes?: string | null;
           responded_at?: string;
         };
         Relationships: [
@@ -135,6 +141,7 @@ export interface Database {
           invitation_id: string;
           guest_name: string;
           guest_email: string;
+          expected_attendees: number;
           invitation_status: InvitationStatus;
           existing_response: Json | null;
         }[];

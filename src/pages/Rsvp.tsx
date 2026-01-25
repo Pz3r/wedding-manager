@@ -9,6 +9,7 @@ interface InvitationData {
   invitation_id: string;
   guest_name: string;
   guest_email: string;
+  expected_attendees: number;
   invitation_status: string;
   existing_response: RsvpFormData | null;
 }
@@ -25,6 +26,7 @@ export default function Rsvp() {
     party_size: 1,
     dietary_restrictions: '',
     message: '',
+    notes: '',
   });
 
   useEffect(() => {
@@ -65,6 +67,7 @@ export default function Rsvp() {
             party_size: invData.existing_response.party_size || 1,
             dietary_restrictions: invData.existing_response.dietary_restrictions || '',
             message: invData.existing_response.message || '',
+            notes: invData.existing_response.notes || '',
           });
           setSubmitted(true);
         }
@@ -93,6 +96,7 @@ export default function Rsvp() {
         party_size: formData.attending ? formData.party_size : 0,
         dietary_restrictions: formData.dietary_restrictions || null,
         message: formData.message || null,
+        notes: formData.notes || null,
       });
 
       if (submitError) {
@@ -106,6 +110,7 @@ export default function Rsvp() {
               party_size: formData.attending ? formData.party_size : 0,
               dietary_restrictions: formData.dietary_restrictions || null,
               message: formData.message || null,
+              notes: formData.notes || null,
               responded_at: new Date().toISOString(),
             })
             .eq('invitation_id', invitation.invitation_id);
@@ -172,6 +177,9 @@ export default function Rsvp() {
                 <li>Party size: {formData.party_size}</li>
                 {formData.dietary_restrictions && (
                   <li>Dietary needs: {formData.dietary_restrictions}</li>
+                )}
+                {formData.notes && (
+                  <li>Notes: {formData.notes}</li>
                 )}
               </ul>
             </div>
@@ -248,12 +256,17 @@ export default function Rsvp() {
                     }
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                   >
-                    {[1, 2, 3, 4, 5].map((num) => (
+                    {Array.from({ length: invitation?.expected_attendees || 1 }, (_, i) => i + 1).map((num) => (
                       <option key={num} value={num}>
                         {num} {num === 1 ? 'person' : 'people'}
                       </option>
                     ))}
                   </select>
+                  {(invitation?.expected_attendees || 1) > 1 && (
+                    <p className="mt-1 text-xs text-gray-500">
+                      You can bring up to {(invitation?.expected_attendees || 1) - 1} guest(s)
+                    </p>
+                  )}
                 </div>
 
                 {/* Dietary Restrictions */}
@@ -282,6 +295,20 @@ export default function Rsvp() {
                 rows={3}
                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                 placeholder="Share your well wishes..."
+              />
+            </div>
+
+            {/* Notes */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Additional notes (optional)
+              </label>
+              <textarea
+                value={formData.notes}
+                onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                rows={2}
+                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                placeholder="Any other information you'd like to share..."
               />
             </div>
 

@@ -19,6 +19,7 @@ serve(async (req) => {
 
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseAnonKey = Deno.env.get('SUPABASE_ANON_KEY')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const resendApiKey = Deno.env.get('RESEND_API_KEY');
 
@@ -26,6 +27,29 @@ serve(async (req) => {
       throw new Error('RESEND_API_KEY is not configured');
     }
 
+    // Verify the user is authenticated
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader) {
+      return new Response(
+        JSON.stringify({ error: 'Missing authorization header' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Create a client with the user's JWT to verify they're authenticated
+    const supabaseClient = createClient(supabaseUrl, supabaseAnonKey, {
+      global: { headers: { Authorization: authHeader } },
+    });
+
+    const { data: { user }, error: userError } = await supabaseClient.auth.getUser();
+    if (userError || !user) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid or expired token' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Use service role client for database operations
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const { invitationId, rsvpUrl }: InvitationRequest = await req.json();
@@ -35,13 +59,21 @@ serve(async (req) => {
       .from('invitations')
       .select(`
         *,
-        guests (name, email)
+        guests (name, email, user_id)
       `)
       .eq('id', invitationId)
       .single();
 
     if (fetchError || !invitation) {
       throw new Error('Invitation not found');
+    }
+
+    // Verify the user owns this guest
+    if (invitation.guests.user_id !== user.id) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     const guestName = invitation.guests.name;
@@ -55,9 +87,9 @@ serve(async (req) => {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: 'Wedding Invitation <onboarding@resend.dev>',
+        from: 'Lili y José <noresponder@bodaliliyjose.com>',
         to: [guestEmail],
-        subject: "You're Invited! 💒",
+        subject: "¡Estás invitado! 💒",
         html: `
 <!DOCTYPE html>
 <html>

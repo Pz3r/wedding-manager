@@ -17,6 +17,7 @@ export default function GuestForm({ isOpen, onClose, onSubmit, guest }: GuestFor
     email: '',
     phone: '',
     group_name: '',
+    expected_attendees: 1,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -28,9 +29,10 @@ export default function GuestForm({ isOpen, onClose, onSubmit, guest }: GuestFor
         email: guest.email,
         phone: guest.phone || '',
         group_name: guest.group_name || '',
+        expected_attendees: guest.expected_attendees || 1,
       });
     } else {
-      setFormData({ name: '', email: '', phone: '', group_name: '' });
+      setFormData({ name: '', email: '', phone: '', group_name: '', expected_attendees: 1 });
     }
     setError('');
   }, [guest, isOpen]);
@@ -94,6 +96,28 @@ export default function GuestForm({ isOpen, onClose, onSubmit, guest }: GuestFor
           onChange={(e) => setFormData({ ...formData, group_name: e.target.value })}
           placeholder="e.g., Bride's Family, Groom's Friends"
         />
+
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Expected Attendees
+          </label>
+          <select
+            value={formData.expected_attendees || 1}
+            onChange={(e) =>
+              setFormData({ ...formData, expected_attendees: parseInt(e.target.value) })
+            }
+            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+          >
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+              <option key={num} value={num}>
+                {num} {num === 1 ? 'person' : 'people'}
+              </option>
+            ))}
+          </select>
+          <p className="mt-1 text-xs text-gray-500">
+            How many people can this guest bring (including themselves)
+          </p>
+        </div>
 
         <div className="flex justify-end space-x-3 pt-4">
           <Button type="button" variant="secondary" onClick={onClose}>

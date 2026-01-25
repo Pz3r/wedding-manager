@@ -177,6 +177,13 @@ export default function Invitations() {
               </div>
             )}
 
+            {selectedInvitation.rsvp_responses.notes && (
+              <div>
+                <h4 className="text-sm font-medium text-gray-500">Notes</h4>
+                <p className="text-sm text-gray-900">{selectedInvitation.rsvp_responses.notes}</p>
+              </div>
+            )}
+
             <div>
               <h4 className="text-sm font-medium text-gray-500">Responded At</h4>
               <p className="text-sm text-gray-900">

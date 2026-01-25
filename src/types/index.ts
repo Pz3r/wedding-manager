@@ -35,6 +35,7 @@ export interface GuestFormData {
   email: string;
   phone?: string;
   group_name?: string;
+  expected_attendees?: number;
 }
 
 export interface RsvpFormData {
@@ -42,6 +43,7 @@ export interface RsvpFormData {
   party_size: number;
   dietary_restrictions?: string;
   message?: string;
+  notes?: string;
 }
 
 // Stats
