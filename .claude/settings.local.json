@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(./node_modules/.bin/tailwindcss:*)",
+      "Bash(ls:*)",
+      "Bash(npm run build:*)",
+      "Bash(supabase init:*)",
+      "Bash(supabase link:*)",
+      "Bash(supabase login:*)"
+    ]
+  }
+}
