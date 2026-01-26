@@ -9,7 +9,7 @@ import Modal from '../components/ui/Modal';
 import type { Guest, GuestWithInvitation, GuestFormData } from '../types';
 
 export default function Guests() {
-  const { guests, loading, error, addGuest, updateGuest, deleteGuest } = useGuests();
+  const { guests, loading, error, addGuest, updateGuest, deleteGuest, refetch: refetchGuests } = useGuests();
   const { createAndSendInvitation, sending } = useInvitations();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -44,8 +44,11 @@ export default function Guests() {
 
   const handleSendInvitation = async () => {
     if (sendingToGuest) {
-      await createAndSendInvitation(sendingToGuest.id);
+      const success = await createAndSendInvitation(sendingToGuest.id);
       setSendingToGuest(null);
+      if (success) {
+        await refetchGuests();
+      }
     }
   };
 
