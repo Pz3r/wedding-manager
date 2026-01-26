@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Guests from './pages/Guests';
 import Invitations from './pages/Invitations';
+import Responses from './pages/Responses';
 import Rsvp from './pages/Rsvp';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/guests" element={<Guests />} />
             <Route path="/invitations" element={<Invitations />} />
+            <Route path="/responses" element={<Responses />} />
           </Route>
 
           {/* Redirect root to dashboard */}

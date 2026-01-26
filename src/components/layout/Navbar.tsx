@@ -5,6 +5,7 @@ import {
   HomeIcon,
   UserGroupIcon,
   EnvelopeIcon,
+  ClipboardDocumentCheckIcon,
   ArrowRightOnRectangleIcon,
 } from '@heroicons/react/24/outline';
 
@@ -30,6 +31,9 @@ export default function Navbar() {
               <NavLink to="/invitations" icon={EnvelopeIcon}>
                 Invitations
               </NavLink>
+              <NavLink to="/responses" icon={ClipboardDocumentCheckIcon}>
+                Responses
+              </NavLink>
             </div>
           </div>
 
@@ -54,6 +58,9 @@ export default function Navbar() {
           </MobileNavLink>
           <MobileNavLink to="/invitations" icon={EnvelopeIcon}>
             Invitations
+          </MobileNavLink>
+          <MobileNavLink to="/responses" icon={ClipboardDocumentCheckIcon}>
+            Responses
           </MobileNavLink>
         </div>
       </div>

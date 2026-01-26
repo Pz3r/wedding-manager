@@ -29,33 +29,59 @@ export default function Dashboard() {
           .select('*', { count: 'exact', head: true })
           .eq('user_id', user.id);
 
-        // Get invitations with responses
+        // Get invitations
         const { data: invitations } = await supabase
           .from('invitations')
           .select(`
-            *,
-            guests!inner (user_id),
-            rsvp_responses (attending, party_size)
+            id,
+            status,
+            guests!inner (user_id)
           `)
           .eq('guests.user_id', user.id);
 
+        const invitationIds = invitations?.map((i) => i.id) || [];
+
+        // Get responses separately (more reliable than nested join with RLS)
+        const { data: rsvpResponses } = await supabase
+          .from('rsvp_responses')
+          .select('invitation_id, attending, party_size')
+          .in('invitation_id', invitationIds);
+
+        // Create a map for quick lookup
+        const responseMap = new Map(
+          rsvpResponses?.map((r) => [r.invitation_id, r]) || []
+        );
+
         const invitationsSent = invitations?.filter((i) => i.status !== 'pending').length || 0;
 
-        const responses = invitations?.filter((i) => i.rsvp_responses?.length > 0) || [];
-        const confirmed = responses.filter((i) => i.rsvp_responses[0]?.attending).length;
-        const declined = responses.filter((i) => !i.rsvp_responses[0]?.attending).length;
-        const pending = invitationsSent - confirmed - declined;
+        // Count awaiting response by status (sent or opened, but not responded yet)
+        const awaitingResponse = invitations?.filter((i) =>
+          i.status === 'sent' || i.status === 'opened'
+        ).length || 0;
 
-        const totalAttendees = responses
-          .filter((i) => i.rsvp_responses[0]?.attending)
-          .reduce((sum, i) => sum + (i.rsvp_responses[0]?.party_size || 1), 0);
+        // Calculate confirmed/declined from responses
+        let confirmed = 0;
+        let declined = 0;
+        let totalAttendees = 0;
+
+        invitations?.forEach((inv) => {
+          const response = responseMap.get(inv.id);
+          if (response) {
+            if (response.attending) {
+              confirmed++;
+              totalAttendees += response.party_size || 1;
+            } else {
+              declined++;
+            }
+          }
+        });
 
         setStats({
           totalGuests: totalGuests || 0,
           invitationsSent,
           confirmed,
           declined,
-          pending,
+          pending: awaitingResponse,
           totalAttendees,
         });
       } catch (err) {
