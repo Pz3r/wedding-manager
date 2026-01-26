@@ -87,9 +87,25 @@ serve(async (req) => {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: 'Lili y José <noresponder@bodaliliyjose.com>',
+        from: 'Lili y José <invitaciones@bodaliliyjose.com>',
+        reply_to: 'liliyjose@bodaliliyjose.com',
         to: [guestEmail],
-        subject: "¡Estás invitado! 💒",
+        subject: "Invitación a nuestra boda - Lili y José",
+        text: `Querido/a ${guestName},
+
+¡Estamos muy emocionados de invitarte a celebrar nuestra boda!
+
+Por favor, confirma tu asistencia haciendo clic en el siguiente enlace:
+${rsvpUrl}
+
+¡Esperamos verte pronto!
+
+Con cariño,
+Lili y José
+
+---
+Este correo fue enviado desde bodaliliyjose.com
+Si tienes preguntas, responde a este correo.`,
         html: `
 <!DOCTYPE html>
 <html>
