@@ -38,14 +38,56 @@ export default function Responses() {
       if (!user) return;
 
       try {
+        // Query rsvp_responses with joins to get all the data we need
         const { data, error } = await supabase
-          .from('rsvp_details')
-          .select('*')
-          .eq('user_id', user.id)
+          .from('rsvp_responses')
+          .select(`
+            id,
+            attending,
+            party_size,
+            dietary_restrictions,
+            message,
+            notes,
+            responded_at,
+            invitations!inner (
+              id,
+              status,
+              guests!inner (
+                id,
+                name,
+                email,
+                phone,
+                group_name,
+                expected_attendees,
+                user_id
+              )
+            )
+          `)
           .order('responded_at', { ascending: false });
 
         if (error) throw error;
-        setResponses(data || []);
+
+        // Transform the nested data to flat structure
+        const transformedData: RsvpDetail[] = (data || [])
+          .filter((r) => r.invitations?.guests?.user_id === user.id)
+          .map((r) => ({
+            response_id: r.id,
+            attending: r.attending,
+            party_size: r.party_size,
+            dietary_restrictions: r.dietary_restrictions,
+            message: r.message,
+            notes: r.notes,
+            responded_at: r.responded_at,
+            guest_id: r.invitations.guests.id,
+            guest_name: r.invitations.guests.name,
+            guest_email: r.invitations.guests.email,
+            guest_phone: r.invitations.guests.phone,
+            group_name: r.invitations.guests.group_name,
+            expected_attendees: r.invitations.guests.expected_attendees,
+            invitation_status: r.invitations.status,
+          }));
+
+        setResponses(transformedData);
       } catch (err) {
         console.error('Failed to fetch responses:', err);
       } finally {
