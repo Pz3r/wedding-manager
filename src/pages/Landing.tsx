@@ -3,6 +3,8 @@ import {
   MapPinIcon,
   ClockIcon,
   HeartIcon,
+  BuildingOffice2Icon,
+  StarIcon,
 } from '@heroicons/react/24/outline';
 
 export default function Landing() {
@@ -168,8 +170,126 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Schedule Section */}
+      {/* Hotels Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-primary-50 to-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-4">
+            Where to Stay
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            We've partnered with nearby hotels for special rates. Here are our top recommendations for your stay.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                name: 'Hotel Condesa DF',
+                address: 'Av. Veracruz 102, Condesa',
+                distance: '10 min from venue',
+                priceRange: '$$$',
+                rating: 4.8,
+                features: ['Rooftop bar', 'Free breakfast'],
+                mapsUrl: 'https://maps.google.com/?q=Hotel+Condesa+DF+Mexico+City',
+                bookingUrl: 'https://www.booking.com/hotel/mx/condesa-df.html',
+              },
+              {
+                name: 'Gran Hotel Ciudad de México',
+                address: 'Av. 16 de Septiembre 82, Centro',
+                distance: '15 min from venue',
+                priceRange: '$$$$',
+                rating: 4.9,
+                features: ['Historic building', 'Spa'],
+                mapsUrl: 'https://maps.google.com/?q=Gran+Hotel+Ciudad+de+Mexico',
+                bookingUrl: 'https://www.booking.com/hotel/mx/gran-ciudad-de-mexico.html',
+              },
+              {
+                name: 'Hotel Carlota',
+                address: 'Río Amazonas 73, Cuauhtémoc',
+                distance: '12 min from venue',
+                priceRange: '$$',
+                rating: 4.5,
+                features: ['Pool', 'Modern design'],
+                mapsUrl: 'https://maps.google.com/?q=Hotel+Carlota+Mexico+City',
+                bookingUrl: 'https://www.booking.com/hotel/mx/carlota.html',
+              },
+              {
+                name: 'Fiesta Americana Reforma',
+                address: 'Paseo de la Reforma 80',
+                distance: '20 min from venue',
+                priceRange: '$$$',
+                rating: 4.6,
+                features: ['Business center', 'Gym'],
+                mapsUrl: 'https://maps.google.com/?q=Fiesta+Americana+Reforma+Mexico+City',
+                bookingUrl: 'https://www.booking.com/hotel/mx/fiesta-americana-reforma.html',
+              },
+            ].map((hotel, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                    <BuildingOffice2Icon className="h-6 w-6 text-primary-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-semibold text-gray-900">{hotel.name}</h3>
+                      <span className="text-primary-600 font-medium">{hotel.priceRange}</span>
+                    </div>
+                    <p className="text-sm text-gray-500 mt-1">{hotel.address}</p>
+                    <div className="flex items-center gap-4 mt-2">
+                      <div className="flex items-center gap-1 text-sm text-gray-600">
+                        <MapPinIcon className="h-4 w-4" />
+                        {hotel.distance}
+                      </div>
+                      <div className="flex items-center gap-1 text-sm text-gray-600">
+                        <StarIcon className="h-4 w-4 text-yellow-500" />
+                        {hotel.rating}
+                      </div>
+                    </div>
+                    <div className="flex gap-2 mt-3">
+                      {hotel.features.map((feature, i) => (
+                        <span
+                          key={i}
+                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex gap-3 mt-4 pt-3 border-t border-gray-100">
+                      <a
+                        href={hotel.mapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-primary-600 transition-colors"
+                      >
+                        <MapPinIcon className="h-4 w-4" />
+                        View Map
+                      </a>
+                      <a
+                        href={hotel.bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
+                      >
+                        Book Now →
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-sm text-gray-500 mt-8">
+            Mention "Lili & José Wedding" when booking for special rates.
+          </p>
+        </div>
+      </section>
+
+      {/* Schedule Section */}
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-12">
             Wedding Day Schedule
