@@ -29,9 +29,12 @@ export function useInvitations() {
       if (error) throw error;
 
       // Transform the data to match our type
+      // rsvp_responses is a single object (or null) since invitation_id has a UNIQUE constraint
       const transformed = (data || []).map((inv) => ({
         ...inv,
-        rsvp_responses: inv.rsvp_responses?.[0] || null,
+        rsvp_responses: Array.isArray(inv.rsvp_responses)
+          ? inv.rsvp_responses[0] || null
+          : inv.rsvp_responses || null,
       }));
 
       setInvitations(transformed as InvitationWithRsvp[]);

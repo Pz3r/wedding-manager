@@ -257,9 +257,12 @@ export default function Responses() {
                     <p className="text-xs text-gray-500 uppercase tracking-wide">
                       Party Size
                     </p>
-                    <p className="text-sm font-medium">
-                      {response.party_size}{' '}
-                      {response.party_size === 1 ? 'person' : 'people'}
+                    <p className={`text-sm font-medium ${response.party_size < response.expected_attendees ? 'text-yellow-700' : ''}`}>
+                      {response.party_size} of {response.expected_attendees}{' '}
+                      {response.expected_attendees === 1 ? 'person' : 'people'}
+                      {response.party_size < response.expected_attendees && (
+                        <ExclamationTriangleIcon className="inline h-4 w-4 ml-1 text-yellow-500" />
+                      )}
                     </p>
                   </div>
 

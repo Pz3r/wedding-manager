@@ -11,7 +11,7 @@ import type { Guest, GuestWithInvitation, GuestFormData } from '../types';
 
 export default function Guests() {
   const { guests, loading, error, addGuest, updateGuest, deleteGuest, refetch: refetchGuests } = useGuests();
-  const { createAndSendInvitation, getOrCreateInvitation, sending } = useInvitations();
+  const { createAndSendInvitation, getOrCreateInvitation, resendInvitation, sending } = useInvitations();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingGuest, setEditingGuest] = useState<Guest | null>(null);
@@ -45,12 +45,22 @@ export default function Guests() {
   };
 
   const handleSendInvitation = async () => {
-    if (sendingToGuest) {
-      const success = await createAndSendInvitation(sendingToGuest.id);
-      setSendingToGuest(null);
-      if (success) {
-        await refetchGuests();
-      }
+    if (!sendingToGuest) return;
+
+    // If the guest already has an invitation, resend it; otherwise create a new one
+    const existingInvitation = sendingToGuest.invitations?.length
+      ? [...sendingToGuest.invitations].sort(
+          (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        )[0]
+      : null;
+
+    const success = existingInvitation
+      ? await resendInvitation(existingInvitation.id)
+      : await createAndSendInvitation(sendingToGuest.id);
+
+    setSendingToGuest(null);
+    if (success) {
+      await refetchGuests();
     }
   };
 
@@ -147,18 +157,18 @@ export default function Guests() {
       <Modal
         isOpen={!!sendingToGuest}
         onClose={() => setSendingToGuest(null)}
-        title="Send Invitation"
+        title={sendingToGuest?.invitations?.length ? 'Resend Invitation' : 'Send Invitation'}
       >
         <p className="text-sm text-gray-500 mb-4">
-          Send a wedding invitation to <strong>{sendingToGuest?.name}</strong> at{' '}
-          <strong>{sendingToGuest?.email}</strong>?
+          {sendingToGuest?.invitations?.length ? 'Resend' : 'Send'} a wedding invitation to{' '}
+          <strong>{sendingToGuest?.name}</strong> at <strong>{sendingToGuest?.email}</strong>?
         </p>
         <div className="flex justify-end space-x-3">
           <Button variant="secondary" onClick={() => setSendingToGuest(null)}>
             Cancel
           </Button>
           <Button onClick={handleSendInvitation} loading={sending}>
-            Send Invitation
+            {sendingToGuest?.invitations?.length ? 'Resend Invitation' : 'Send Invitation'}
           </Button>
         </div>
       </Modal>

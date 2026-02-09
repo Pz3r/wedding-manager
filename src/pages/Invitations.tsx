@@ -1,21 +1,29 @@
-import { useState } from 'react';
 import {
   EnvelopeIcon,
-  ArrowPathIcon,
   CheckCircleIcon,
   XCircleIcon,
+  ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
 import { useInvitations } from '../hooks/useInvitations';
 import InvitationStatus from '../components/invitations/InvitationStatus';
-import Button from '../components/ui/Button';
-import Badge from '../components/ui/Badge';
-import Modal from '../components/ui/Modal';
 import { formatDateTime } from '../lib/utils';
 import type { InvitationWithRsvp } from '../types';
 
+function getLastUpdated(invitation: InvitationWithRsvp): string {
+  const dates = [
+    invitation.created_at,
+    invitation.sent_at,
+    invitation.opened_at,
+    invitation.rsvp_responses?.responded_at,
+    invitation.rsvp_responses?.updated_at,
+  ].filter(Boolean) as string[];
+
+  const latest = dates.sort((a, b) => new Date(b).getTime() - new Date(a).getTime())[0];
+  return latest ? formatDateTime(latest) : '-';
+}
+
 export default function Invitations() {
-  const { invitations, loading, sending, resendInvitation } = useInvitations();
-  const [selectedInvitation, setSelectedInvitation] = useState<InvitationWithRsvp | null>(null);
+  const { invitations, loading } = useInvitations();
 
   if (loading) {
     return (
@@ -59,8 +67,8 @@ export default function Invitations() {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Sent
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Actions
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Updated
                 </th>
               </tr>
             </thead>
@@ -83,9 +91,13 @@ export default function Invitations() {
                       <div className="flex items-center">
                         {invitation.rsvp_responses.attending ? (
                           <>
-                            <CheckCircleIcon className="h-5 w-5 text-green-500 mr-1" />
-                            <span className="text-sm text-green-700">
-                              Attending ({invitation.rsvp_responses.party_size})
+                            {invitation.rsvp_responses.party_size < invitation.guests.expected_attendees ? (
+                              <ExclamationTriangleIcon className="h-5 w-5 text-yellow-500 mr-1" />
+                            ) : (
+                              <CheckCircleIcon className="h-5 w-5 text-green-500 mr-1" />
+                            )}
+                            <span className={`text-sm ${invitation.rsvp_responses.party_size < invitation.guests.expected_attendees ? 'text-yellow-700' : 'text-green-700'}`}>
+                              Attending ({invitation.rsvp_responses.party_size} of {invitation.guests.expected_attendees})
                             </span>
                           </>
                         ) : (
@@ -102,27 +114,8 @@ export default function Invitations() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {invitation.sent_at ? formatDateTime(invitation.sent_at) : '-'}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <div className="flex justify-end space-x-2">
-                      {invitation.rsvp_responses && (
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          onClick={() => setSelectedInvitation(invitation)}
-                        >
-                          View Details
-                        </Button>
-                      )}
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => resendInvitation(invitation.id)}
-                        loading={sending}
-                        title="Resend Invitation"
-                      >
-                        <ArrowPathIcon className="h-4 w-4" />
-                      </Button>
-                    </div>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {getLastUpdated(invitation)}
                   </td>
                 </tr>
               ))}
@@ -130,75 +123,6 @@ export default function Invitations() {
           </table>
         </div>
       )}
-
-      {/* RSVP Details Modal */}
-      <Modal
-        isOpen={!!selectedInvitation}
-        onClose={() => setSelectedInvitation(null)}
-        title="RSVP Details"
-      >
-        {selectedInvitation?.rsvp_responses && (
-          <div className="space-y-4">
-            <div>
-              <h4 className="text-sm font-medium text-gray-500">Guest</h4>
-              <p className="text-sm text-gray-900">{selectedInvitation.guests.name}</p>
-            </div>
-
-            <div>
-              <h4 className="text-sm font-medium text-gray-500">Attending</h4>
-              <Badge variant={selectedInvitation.rsvp_responses.attending ? 'green' : 'red'}>
-                {selectedInvitation.rsvp_responses.attending ? 'Yes' : 'No'}
-              </Badge>
-            </div>
-
-            {selectedInvitation.rsvp_responses.attending && (
-              <div>
-                <h4 className="text-sm font-medium text-gray-500">Party Size</h4>
-                <p className="text-sm text-gray-900">
-                  {selectedInvitation.rsvp_responses.party_size}{' '}
-                  {selectedInvitation.rsvp_responses.party_size === 1 ? 'person' : 'people'}
-                </p>
-              </div>
-            )}
-
-            {selectedInvitation.rsvp_responses.dietary_restrictions && (
-              <div>
-                <h4 className="text-sm font-medium text-gray-500">Dietary Restrictions</h4>
-                <p className="text-sm text-gray-900">
-                  {selectedInvitation.rsvp_responses.dietary_restrictions}
-                </p>
-              </div>
-            )}
-
-            {selectedInvitation.rsvp_responses.message && (
-              <div>
-                <h4 className="text-sm font-medium text-gray-500">Message</h4>
-                <p className="text-sm text-gray-900">{selectedInvitation.rsvp_responses.message}</p>
-              </div>
-            )}
-
-            {selectedInvitation.rsvp_responses.notes && (
-              <div>
-                <h4 className="text-sm font-medium text-gray-500">Notes</h4>
-                <p className="text-sm text-gray-900">{selectedInvitation.rsvp_responses.notes}</p>
-              </div>
-            )}
-
-            <div>
-              <h4 className="text-sm font-medium text-gray-500">Responded At</h4>
-              <p className="text-sm text-gray-900">
-                {formatDateTime(selectedInvitation.rsvp_responses.responded_at)}
-              </p>
-            </div>
-
-            <div className="pt-4">
-              <Button variant="secondary" onClick={() => setSelectedInvitation(null)}>
-                Close
-              </Button>
-            </div>
-          </div>
-        )}
-      </Modal>
     </div>
   );
 }

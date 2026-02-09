@@ -98,6 +98,7 @@ export interface Database {
           message: string | null;
           notes: string | null;
           responded_at: string;
+          updated_at: string | null;
         };
         Insert: {
           id?: string;
@@ -108,6 +109,7 @@ export interface Database {
           message?: string | null;
           notes?: string | null;
           responded_at?: string;
+          updated_at?: string | null;
         };
         Update: {
           id?: string;
@@ -118,6 +120,7 @@ export interface Database {
           message?: string | null;
           notes?: string | null;
           responded_at?: string;
+          updated_at?: string | null;
         };
         Relationships: [
           {

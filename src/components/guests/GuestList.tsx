@@ -102,17 +102,17 @@ export default function GuestList({ guests, onEdit, onDelete, onSendInvitation, 
                 <td className="px-6 py-4 whitespace-nowrap">{getStatusBadge(status)}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <div className="flex justify-end space-x-2">
-                    {(!status || status === 'pending') && (
+                    {(!status || status === 'pending' || status === 'sent') && (
                       <Button
                         variant="secondary"
                         size="sm"
                         onClick={() => onSendInvitation(guest)}
-                        title="Send Invitation via Email"
+                        title={status === 'sent' ? 'Resend Invitation via Email' : 'Send Invitation via Email'}
                       >
                         <EnvelopeIcon className="h-4 w-4" />
                       </Button>
                     )}
-                    {guest.phone && (!status || status === 'pending') && (
+                    {guest.phone && (!status || status === 'pending' || status === 'sent') && (
                       <Button
                         variant="secondary"
                         size="sm"

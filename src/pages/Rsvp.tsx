@@ -70,6 +70,12 @@ export default function Rsvp() {
             notes: invData.existing_response.notes || '',
           });
           setSubmitted(true);
+        } else {
+          // Default party size to the max expected attendees
+          setFormData((prev) => ({
+            ...prev,
+            party_size: invData.expected_attendees || 1,
+          }));
         }
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load invitation');
@@ -111,7 +117,7 @@ export default function Rsvp() {
               dietary_restrictions: formData.dietary_restrictions || null,
               message: formData.message || null,
               notes: formData.notes || null,
-              responded_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
             })
             .eq('invitation_id', invitation.invitation_id);
 
