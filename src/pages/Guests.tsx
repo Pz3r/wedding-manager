@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { PlusIcon } from '@heroicons/react/24/outline';
 import { useGuests } from '../hooks/useGuests';
 import { useInvitations } from '../hooks/useInvitations';
+import { getRsvpUrl, getWhatsAppUrl } from '../lib/utils';
 import GuestList from '../components/guests/GuestList';
 import GuestForm from '../components/guests/GuestForm';
 import Button from '../components/ui/Button';
@@ -10,12 +11,13 @@ import type { Guest, GuestWithInvitation, GuestFormData } from '../types';
 
 export default function Guests() {
   const { guests, loading, error, addGuest, updateGuest, deleteGuest, refetch: refetchGuests } = useGuests();
-  const { createAndSendInvitation, sending } = useInvitations();
+  const { createAndSendInvitation, getOrCreateInvitation, sending } = useInvitations();
 
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingGuest, setEditingGuest] = useState<Guest | null>(null);
   const [deletingGuest, setDeletingGuest] = useState<GuestWithInvitation | null>(null);
   const [sendingToGuest, setSendingToGuest] = useState<GuestWithInvitation | null>(null);
+  const [whatsappGuest, setWhatsappGuest] = useState<GuestWithInvitation | null>(null);
 
   const handleAddGuest = () => {
     setEditingGuest(null);
@@ -52,6 +54,31 @@ export default function Guests() {
     }
   };
 
+  const handleSendWhatsApp = async () => {
+    if (!whatsappGuest) return;
+
+    // Open window synchronously to avoid popup blockers
+    const newWindow = window.open('', '_blank');
+
+    const token = await getOrCreateInvitation(whatsappGuest);
+    if (!token || !newWindow) {
+      newWindow?.close();
+      return;
+    }
+
+    const rsvpUrl = getRsvpUrl(token);
+    const message =
+      `¡Hola ${whatsappGuest.name}! ` +
+      `Estamos muy emocionados de invitarte a celebrar nuestra boda. ` +
+      `Por favor, confirma tu asistencia aquí: ${rsvpUrl} ` +
+      `¡Esperamos verte pronto! Con cariño, Lili y José`;
+
+    newWindow.location.href = getWhatsAppUrl(whatsappGuest.phone!, message);
+
+    setWhatsappGuest(null);
+    await refetchGuests();
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -86,6 +113,7 @@ export default function Guests() {
         onEdit={handleEditGuest}
         onDelete={setDeletingGuest}
         onSendInvitation={setSendingToGuest}
+        onSendWhatsApp={setWhatsappGuest}
       />
 
       <GuestForm
@@ -131,6 +159,33 @@ export default function Guests() {
           </Button>
           <Button onClick={handleSendInvitation} loading={sending}>
             Send Invitation
+          </Button>
+        </div>
+      </Modal>
+
+      {/* Send WhatsApp Invitation Confirmation Modal */}
+      <Modal
+        isOpen={!!whatsappGuest}
+        onClose={() => setWhatsappGuest(null)}
+        title="Send via WhatsApp"
+      >
+        <p className="text-sm text-gray-500 mb-4">
+          Send a wedding invitation to <strong>{whatsappGuest?.name}</strong> via WhatsApp
+          at <strong>{whatsappGuest?.phone}</strong>?
+        </p>
+        <p className="text-xs text-gray-400 mb-4">
+          This will open WhatsApp with a pre-composed message containing the RSVP link.
+        </p>
+        <div className="flex justify-end space-x-3">
+          <Button variant="secondary" onClick={() => setWhatsappGuest(null)}>
+            Cancel
+          </Button>
+          <Button
+            onClick={handleSendWhatsApp}
+            loading={sending}
+            className="bg-green-600 hover:bg-green-700 focus:ring-green-500"
+          >
+            Open WhatsApp
           </Button>
         </div>
       </Modal>

@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
 import { generateToken, getRsvpUrl } from '../lib/utils';
-import type { InvitationWithRsvp } from '../types';
+import type { InvitationWithRsvp, GuestWithInvitation } from '../types';
 
 export function useInvitations() {
   const { user } = useAuth();
@@ -97,6 +97,54 @@ export function useInvitations() {
     }
   };
 
+  const getOrCreateInvitation = async (guest: GuestWithInvitation): Promise<string | null> => {
+    try {
+      setSending(true);
+      setError(null);
+
+      // Reuse existing invitation token if one exists
+      if (guest.invitations && guest.invitations.length > 0) {
+        const sorted = [...guest.invitations].sort(
+          (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+        );
+        const existing = sorted[0];
+
+        if (existing.status === 'pending') {
+          await supabase
+            .from('invitations')
+            .update({ status: 'sent', sent_at: new Date().toISOString() })
+            .eq('id', existing.id);
+        }
+
+        await fetchInvitations();
+        return existing.token;
+      }
+
+      // No invitation exists — create one
+      const token = generateToken();
+      const { error: createError } = await supabase
+        .from('invitations')
+        .insert({
+          guest_id: guest.id,
+          token,
+          status: 'sent',
+          sent_at: new Date().toISOString(),
+        })
+        .select()
+        .single();
+
+      if (createError) throw createError;
+
+      await fetchInvitations();
+      return token;
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to create invitation');
+      return null;
+    } finally {
+      setSending(false);
+    }
+  };
+
   const resendInvitation = async (invitationId: string): Promise<boolean> => {
     try {
       setSending(true);
@@ -143,6 +191,7 @@ export function useInvitations() {
     sending,
     error,
     createAndSendInvitation,
+    getOrCreateInvitation,
     resendInvitation,
     refetch: fetchInvitations,
   };

@@ -13,6 +13,11 @@ export function getRsvpUrl(token: string): string {
   return `${baseUrl}/rsvp/${token}`;
 }
 
+export function getWhatsAppUrl(phone: string, message: string): string {
+  const cleanPhone = phone.replace(/\D/g, '');
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+}
+
 export function formatDate(date: string | Date): string {
   return new Intl.DateTimeFormat('en-US', {
     month: 'short',
