@@ -5,6 +5,8 @@ import {
   HeartIcon,
   BuildingOffice2Icon,
   StarIcon,
+  GiftIcon,
+  BanknotesIcon,
 } from '@heroicons/react/24/outline';
 
 export default function Landing() {
@@ -60,7 +62,7 @@ export default function Landing() {
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Fecha</h3>
               <p className="text-gray-600">Sábado</p>
-              <p className="text-2xl font-serif text-primary-600">15 de Junio, 2026</p>
+              <p className="text-2xl font-serif text-primary-600">24 de Octubre, 2026</p>
             </div>
 
             <div className="p-6">
@@ -68,8 +70,8 @@ export default function Landing() {
                 <ClockIcon className="h-8 w-8 text-primary-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Hora</h3>
-              <p className="text-gray-600">La ceremonia comienza a las</p>
-              <p className="text-2xl font-serif text-primary-600">4:00 PM</p>
+              <p className="text-gray-600">La recepción comienza a las</p>
+              <p className="text-2xl font-serif text-primary-600">2:00 PM</p>
             </div>
 
             <div className="p-6">
@@ -77,8 +79,8 @@ export default function Landing() {
                 <MapPinIcon className="h-8 w-8 text-primary-600" />
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Lugar</h3>
-              <p className="text-gray-600">Hacienda Los Sueños</p>
-              <p className="text-2xl font-serif text-primary-600">Ciudad de México</p>
+              <p className="text-gray-600">Club Vergel Resort</p>
+              <p className="text-2xl font-serif text-primary-600">Bernal, Qro</p>
             </div>
           </div>
         </div>
@@ -136,13 +138,13 @@ export default function Landing() {
 
             <div>
               <h3 className="text-2xl font-serif text-gray-900 mb-4">
-                Hacienda Los Sueños
+                Club Vergel Resort
               </h3>
               <p className="text-gray-600 mb-6">
-                Ubicada en el corazón de la Ciudad de México, Hacienda Los Sueños
-                ofrece un entorno romántico y elegante para nuestro día especial.
-                Con sus hermosos jardines, arquitectura histórica y vistas
-                impresionantes, es el lugar perfecto para celebrar nuestro amor.
+                Ubicado en Bernal, Querétaro, Club Vergel Resort ofrece un entorno
+                romántico y elegante con vistas a la majestuosa Peña de Bernal.
+                Con sus hermosos jardines y ambiente único, es el lugar perfecto
+                para celebrar nuestro amor.
               </p>
 
               <div className="space-y-3">
@@ -150,14 +152,13 @@ export default function Landing() {
                   <MapPinIcon className="h-5 w-5 text-primary-500 mt-0.5" />
                   <div>
                     <p className="font-medium text-gray-900">Dirección</p>
-                    <p className="text-gray-600">123 Avenida Principal, Col. Centro</p>
-                    <p className="text-gray-600">Ciudad de México, CDMX 06000</p>
+                    <p className="text-gray-600">Bernal, Querétaro</p>
                   </div>
                 </div>
               </div>
 
               <a
-                href="https://maps.google.com"
+                href="https://maps.app.goo.gl/YXjD24JJBPs38Akh6?g_st=ic"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 mt-6 text-primary-600 hover:text-primary-700 font-medium"
@@ -183,44 +184,54 @@ export default function Landing() {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                name: 'Hotel Condesa DF',
-                address: 'Av. Veracruz 102, Condesa',
-                distance: '10 min del lugar',
-                priceRange: '$$$',
-                rating: 4.8,
-                features: ['Terraza bar', 'Desayuno incluido'],
-                mapsUrl: 'https://maps.google.com/?q=Hotel+Condesa+DF+Mexico+City',
-                bookingUrl: 'https://www.booking.com/hotel/mx/condesa-df.html',
-              },
-              {
-                name: 'Gran Hotel Ciudad de México',
-                address: 'Av. 16 de Septiembre 82, Centro',
-                distance: '15 min del lugar',
-                priceRange: '$$$$',
-                rating: 4.9,
-                features: ['Edificio histórico', 'Spa'],
-                mapsUrl: 'https://maps.google.com/?q=Gran+Hotel+Ciudad+de+Mexico',
-                bookingUrl: 'https://www.booking.com/hotel/mx/gran-ciudad-de-mexico.html',
-              },
-              {
-                name: 'Hotel Carlota',
-                address: 'Río Amazonas 73, Cuauhtémoc',
-                distance: '12 min del lugar',
+                name: 'Hotel Quinta Arantxa',
+                address: 'Calle Ezequiel Montes 10, Barrio La Capilla, Bernal',
+                distance: '3 min caminando al centro',
                 priceRange: '$$',
-                rating: 4.5,
-                features: ['Alberca', 'Diseño moderno'],
-                mapsUrl: 'https://maps.google.com/?q=Hotel+Carlota+Mexico+City',
-                bookingUrl: 'https://www.booking.com/hotel/mx/carlota.html',
+                rating: 9.4,
+                features: ['Vista a la Peña', 'Jardín y terraza'],
+                mapsUrl: 'https://www.google.com/maps/search/Hotel+Quinta+Arantxa+Bernal+Querétaro',
+                bookingUrl: 'https://www.booking.com/hotel/mx/quinta-arantxa.html',
               },
               {
-                name: 'Fiesta Americana Reforma',
-                address: 'Paseo de la Reforma 80',
-                distance: '20 min del lugar',
+                name: 'Hotel de Piedra',
+                address: 'Calle de la Corregidora No. 67, Bernal',
+                distance: 'En el centro de Bernal',
                 priceRange: '$$$',
-                rating: 4.6,
-                features: ['Centro de negocios', 'Gimnasio'],
-                mapsUrl: 'https://maps.google.com/?q=Fiesta+Americana+Reforma+Mexico+City',
-                bookingUrl: 'https://www.booking.com/hotel/mx/fiesta-americana-reforma.html',
+                rating: 8.7,
+                features: ['Spa y wellness', 'Vinícola y biblioteca'],
+                mapsUrl: 'https://www.google.com/maps/search/Hotel+de+Piedra+Bernal+Querétaro',
+                bookingUrl: 'https://www.booking.com/hotel/mx/de-piedra.html',
+              },
+              {
+                name: 'Casa Mateo Hotel Boutique',
+                address: '5 de Mayo esquina Colón, Bernal',
+                distance: 'En el centro de Bernal',
+                priceRange: '$$$',
+                rating: 8.4,
+                features: ['Edificio colonial s. XVIII', 'Terraza con vinos'],
+                mapsUrl: 'https://www.google.com/maps/search/Casa+Mateo+Hotel+Boutique+Bernal+Querétaro',
+                bookingUrl: 'https://www.booking.com/hotel/mx/casa-mateo-boutique.html',
+              },
+              {
+                name: 'Suites Campestres Montebello',
+                address: 'Antiguo Camino a Bernal s/n, Bernal',
+                distance: '~9 km del centro',
+                priceRange: '$$$',
+                rating: 9.0,
+                features: ['Alberca', 'Restaurante y cocina'],
+                mapsUrl: 'https://www.google.com/maps/search/Suites+Campestres+Montebello+Bernal+Querétaro',
+                bookingUrl: 'https://www.booking.com/hotel/mx/montebello-bernal.html',
+              },
+              {
+                name: 'Cabañas Rancho San Jorge',
+                address: 'Carretera Colón-Bernal s/n, Bernal',
+                distance: '5 min en auto del centro',
+                priceRange: '$$',
+                rating: 8.4,
+                features: ['Cabañas con chimenea', 'Vista panorámica'],
+                mapsUrl: 'https://www.google.com/maps/search/Cabañas+Rancho+San+Jorge+Bernal+Querétaro',
+                bookingUrl: 'https://www.booking.com/hotel/mx/cabanas-rancho-san-jorge.html',
               },
             ].map((hotel, index) => (
               <div
@@ -297,17 +308,15 @@ export default function Landing() {
 
           <div className="space-y-0">
             {[
-              { time: '4:00 PM', event: 'Llegada de Invitados', description: 'Bebidas de bienvenida y ubicación' },
-              { time: '4:30 PM', event: 'Ceremonia', description: 'Intercambio de votos' },
-              { time: '5:30 PM', event: 'Hora del Cóctel', description: 'Aperitivos y bebidas en el jardín' },
-              { time: '7:00 PM', event: 'Recepción', description: 'Cena, brindis y celebración' },
-              { time: '9:00 PM', event: 'Baile', description: '¡A bailar!' },
-              { time: '12:00 AM', event: 'Despedida', description: 'Gracias por celebrar con nosotros' },
+              { time: '2:00 PM', event: 'Recepción', description: 'Llegada de invitados y bienvenida' },
+              { time: '2:30 PM', event: 'Ceremonia simbólica y civil', description: 'Intercambio de votos' },
+              { time: '4:00 PM', event: '¡Inicia la pachanga!', description: 'Música, baile y celebración' },
+              { time: '12:00 AM', event: 'Fin del evento', description: 'Gracias por celebrar con nosotros' },
             ].map((item, index) => (
               <div key={index} className="flex gap-6 items-start">
                 <div className="flex flex-col items-center">
                   <div className="w-4 h-4 bg-primary-500 rounded-full"></div>
-                  {index < 5 && <div className="w-0.5 h-16 bg-primary-200"></div>}
+                  {index < 3 && <div className="w-0.5 h-16 bg-primary-200"></div>}
                 </div>
                 <div className="pb-8">
                   <p className="text-sm font-medium text-primary-600">{item.time}</p>
@@ -329,13 +338,68 @@ export default function Landing() {
 
           <div className="bg-primary-50 rounded-2xl p-8">
             <p className="text-2xl font-serif text-primary-700 mb-4">
-              Formal / Etiqueta Opcional
+              Vestido Cóctel y Guayabera
             </p>
             <p className="text-gray-600">
-              Les pedimos amablemente asistir con vestimenta formal.
-              Los caballeros pueden usar traje o esmoquin, y las damas
-              vestidos largos o de cóctel elegantes.
+              Queremos que se sientan cómodos, por lo que pueden llevar
+              tenis o zapatos cómodos.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Gift Registry Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-primary-50 to-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
+            Mesa de Regalos
+          </h2>
+          <p className="text-gray-600 mb-12 max-w-xl mx-auto">
+            Tu presencia es el mejor regalo, pero cualquier detalle te lo agradeceremos de corazón
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <a
+              href="https://www.ejemplo.com/mesa-de-regalos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md transition-shadow group"
+            >
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
+                <GiftIcon className="h-8 w-8 text-primary-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Mesa de Regalos</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Visita nuestra mesa de regalos en línea
+              </p>
+              <span className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 group-hover:text-primary-700">
+                Ver mesa de regalos →
+              </span>
+            </a>
+
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BanknotesIcon className="h-8 w-8 text-primary-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Transferencia Bancaria</h3>
+              <p className="text-gray-600 text-sm mb-4">
+                Si prefieres hacer una transferencia
+              </p>
+              <div className="text-left bg-gray-50 rounded-lg p-4 space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Banco:</span>
+                  <span className="font-medium text-gray-900">BANCO EJEMPLO</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Titular:</span>
+                  <span className="font-medium text-gray-900">NOMBRE DEL TITULAR</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">CLABE:</span>
+                  <span className="font-medium text-gray-900">0000 0000 0000 000000</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -344,7 +408,7 @@ export default function Landing() {
       <footer className="py-12 px-4 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-serif mb-4">Lili & José</h2>
-          <p className="text-gray-400 mb-6">15 de Junio, 2026</p>
+          <p className="text-gray-400 mb-6">24 de Octubre, 2026</p>
 
           <div className="flex items-center justify-center gap-4 text-gray-400">
             <span className="w-16 h-px bg-gray-700"></span>
