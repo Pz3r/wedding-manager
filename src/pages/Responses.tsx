@@ -127,9 +127,9 @@ export default function Responses() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">RSVP Responses</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Respuestas RSVP</h1>
         <p className="mt-1 text-sm text-gray-500">
-          View all guest responses and dietary requirements
+          Ver todas las respuestas y requisitos dietéticos
         </p>
       </div>
 
@@ -139,7 +139,7 @@ export default function Responses() {
           <div className="flex items-center">
             <UserGroupIcon className="h-8 w-8 text-blue-500" />
             <div className="ml-3">
-              <p className="text-sm text-gray-500">Total Responses</p>
+              <p className="text-sm text-gray-500">Total Respuestas</p>
               <p className="text-2xl font-semibold">{stats.total}</p>
             </div>
           </div>
@@ -148,7 +148,7 @@ export default function Responses() {
           <div className="flex items-center">
             <CheckCircleIcon className="h-8 w-8 text-green-500" />
             <div className="ml-3">
-              <p className="text-sm text-gray-500">Attending</p>
+              <p className="text-sm text-gray-500">Asisten</p>
               <p className="text-2xl font-semibold text-green-600">
                 {stats.attending}
               </p>
@@ -159,7 +159,7 @@ export default function Responses() {
           <div className="flex items-center">
             <XCircleIcon className="h-8 w-8 text-red-500" />
             <div className="ml-3">
-              <p className="text-sm text-gray-500">Declined</p>
+              <p className="text-sm text-gray-500">Declinaron</p>
               <p className="text-2xl font-semibold text-red-600">
                 {stats.declined}
               </p>
@@ -170,7 +170,7 @@ export default function Responses() {
           <div className="flex items-center">
             <UserGroupIcon className="h-8 w-8 text-primary-500" />
             <div className="ml-3">
-              <p className="text-sm text-gray-500">Total Attendees</p>
+              <p className="text-sm text-gray-500">Total Asistentes</p>
               <p className="text-2xl font-semibold text-primary-600">
                 {stats.totalAttendees}
               </p>
@@ -191,9 +191,9 @@ export default function Responses() {
                 : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            {f === 'all' && `All (${stats.total})`}
-            {f === 'attending' && `Attending (${stats.attending})`}
-            {f === 'declined' && `Declined (${stats.declined})`}
+            {f === 'all' && `Todos (${stats.total})`}
+            {f === 'attending' && `Asisten (${stats.attending})`}
+            {f === 'declined' && `Declinaron (${stats.declined})`}
           </button>
         ))}
       </div>
@@ -203,10 +203,10 @@ export default function Responses() {
         <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
           <UserGroupIcon className="mx-auto h-12 w-12 text-gray-400" />
           <h3 className="mt-2 text-sm font-medium text-gray-900">
-            No responses yet
+            No hay respuestas aún
           </h3>
           <p className="mt-1 text-sm text-gray-500">
-            Responses will appear here once guests RSVP.
+            Las respuestas aparecerán aquí cuando los invitados confirmen.
           </p>
         </div>
       ) : (
@@ -243,7 +243,7 @@ export default function Responses() {
                 </div>
                 <div className="text-right">
                   <Badge variant={response.attending ? 'green' : 'red'}>
-                    {response.attending ? 'Attending' : 'Declined'}
+                    {response.attending ? 'Asiste' : 'Declinó'}
                   </Badge>
                   <p className="text-xs text-gray-500 mt-1">
                     {formatDateTime(response.responded_at)}
@@ -255,11 +255,11 @@ export default function Responses() {
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-100">
                   <div>
                     <p className="text-xs text-gray-500 uppercase tracking-wide">
-                      Party Size
+                      Tamaño del Grupo
                     </p>
                     <p className={`text-sm font-medium ${response.party_size < response.expected_attendees ? 'text-yellow-700' : ''}`}>
-                      {response.party_size} of {response.expected_attendees}{' '}
-                      {response.expected_attendees === 1 ? 'person' : 'people'}
+                      {response.party_size} de {response.expected_attendees}{' '}
+                      {response.expected_attendees === 1 ? 'persona' : 'personas'}
                       {response.party_size < response.expected_attendees && (
                         <ExclamationTriangleIcon className="inline h-4 w-4 ml-1 text-yellow-500" />
                       )}
@@ -270,7 +270,7 @@ export default function Responses() {
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide flex items-center">
                         <ExclamationTriangleIcon className="h-3 w-3 mr-1 text-yellow-500" />
-                        Dietary Requirements
+                        Requisitos Dietéticos
                       </p>
                       <p className="text-sm font-medium text-yellow-700">
                         {response.dietary_restrictions}
@@ -281,7 +281,7 @@ export default function Responses() {
                   {response.notes && (
                     <div>
                       <p className="text-xs text-gray-500 uppercase tracking-wide">
-                        Notes
+                        Notas
                       </p>
                       <p className="text-sm">{response.notes}</p>
                     </div>
@@ -292,7 +292,7 @@ export default function Responses() {
               {response.message && (
                 <div className="mt-4 pt-4 border-t border-gray-100">
                   <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                    Message
+                    Mensaje
                   </p>
                   <p className="text-sm text-gray-700 italic">
                     "{response.message}"
@@ -308,14 +308,14 @@ export default function Responses() {
       {stats.withDietary > 0 && (
         <div className="mt-8">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">
-            Dietary Requirements Summary
+            Resumen de Requisitos Dietéticos
           </h2>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
             <div className="flex items-start">
               <ExclamationTriangleIcon className="h-5 w-5 text-yellow-600 mt-0.5" />
               <div className="ml-3">
                 <p className="text-sm font-medium text-yellow-800">
-                  {stats.withDietary} guest(s) with dietary requirements
+                  {stats.withDietary} invitado(s) con requisitos dietéticos
                 </p>
                 <ul className="mt-2 space-y-1">
                   {responses

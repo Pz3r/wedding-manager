@@ -7,10 +7,10 @@ interface InvitationStatusProps {
 
 export default function InvitationStatus({ status }: InvitationStatusProps) {
   const config: Record<Status, { variant: 'gray' | 'blue' | 'yellow' | 'green'; label: string }> = {
-    pending: { variant: 'gray', label: 'Pending' },
-    sent: { variant: 'blue', label: 'Sent' },
-    opened: { variant: 'yellow', label: 'Opened' },
-    responded: { variant: 'green', label: 'Responded' },
+    pending: { variant: 'gray', label: 'Pendiente' },
+    sent: { variant: 'blue', label: 'Enviada' },
+    opened: { variant: 'yellow', label: 'Abierta' },
+    responded: { variant: 'green', label: 'Respondida' },
   };
 
   const { variant, label } = config[status];

@@ -18,12 +18,12 @@ export default function Register() {
     setError('');
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError('Las contraseñas no coinciden');
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError('La contraseña debe tener al menos 6 caracteres');
       return;
     }
 
@@ -45,13 +45,13 @@ export default function Register() {
       <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8 text-center">
           <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-6 rounded-md">
-            <h2 className="text-xl font-semibold mb-2">Check your email</h2>
+            <h2 className="text-xl font-semibold mb-2">Revisa tu correo</h2>
             <p className="text-sm">
-              We've sent you a confirmation link. Please check your email to verify your account.
+              Te hemos enviado un enlace de confirmación. Revisa tu correo para verificar tu cuenta.
             </p>
           </div>
           <Link to="/login" className="text-primary-600 hover:text-primary-500 font-medium">
-            Back to login
+            Volver al inicio de sesión
           </Link>
         </div>
       </div>
@@ -62,8 +62,8 @@ export default function Register() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h1 className="text-center text-3xl font-bold text-gray-900">Wedding Guest Manager</h1>
-          <h2 className="mt-6 text-center text-xl text-gray-600">Create your account</h2>
+          <h1 className="text-center text-3xl font-bold text-gray-900">Gestor de Invitados</h1>
+          <h2 className="mt-6 text-center text-xl text-gray-600">Crea tu cuenta</h2>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -75,47 +75,47 @@ export default function Register() {
 
           <div className="space-y-4">
             <Input
-              label="Email address"
+              label="Correo electrónico"
               type="email"
               name="email"
               autoComplete="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder="tu@ejemplo.com"
             />
 
             <Input
-              label="Password"
+              label="Contraseña"
               type="password"
               name="password"
               autoComplete="new-password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="At least 6 characters"
+              placeholder="Mínimo 6 caracteres"
             />
 
             <Input
-              label="Confirm password"
+              label="Confirmar contraseña"
               type="password"
               name="confirmPassword"
               autoComplete="new-password"
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm your password"
+              placeholder="Confirma tu contraseña"
             />
           </div>
 
           <Button type="submit" loading={loading} className="w-full">
-            Create account
+            Crear cuenta
           </Button>
 
           <p className="text-center text-sm text-gray-600">
-            Already have an account?{' '}
+            ¿Ya tienes cuenta?{' '}
             <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500">
-              Sign in
+              Inicia sesión
             </Link>
           </p>
         </form>

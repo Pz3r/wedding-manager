@@ -20,7 +20,7 @@ export default function Landing() {
 
         <div className="relative text-center max-w-4xl mx-auto">
           <p className="text-primary-600 font-medium tracking-widest uppercase mb-4">
-            We're Getting Married!
+            Nos Casamos
           </p>
 
           <h1 className="text-6xl md:text-8xl font-serif text-gray-900 mb-6">
@@ -34,7 +34,7 @@ export default function Landing() {
           </div>
 
           <p className="text-xl md:text-2xl text-gray-600 font-light">
-            Together with our families, we invite you to celebrate our wedding
+            Junto a nuestras familias, te invitamos a celebrar nuestra boda
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export default function Landing() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-16">
-            Save the Date
+            Reserva la Fecha
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 text-center">
@@ -58,17 +58,17 @@ export default function Landing() {
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CalendarIcon className="h-8 w-8 text-primary-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Date</h3>
-              <p className="text-gray-600">Saturday</p>
-              <p className="text-2xl font-serif text-primary-600">June 15, 2026</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Fecha</h3>
+              <p className="text-gray-600">Sábado</p>
+              <p className="text-2xl font-serif text-primary-600">15 de Junio, 2026</p>
             </div>
 
             <div className="p-6">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <ClockIcon className="h-8 w-8 text-primary-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Time</h3>
-              <p className="text-gray-600">Ceremony begins at</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Hora</h3>
+              <p className="text-gray-600">La ceremonia comienza a las</p>
               <p className="text-2xl font-serif text-primary-600">4:00 PM</p>
             </div>
 
@@ -76,9 +76,9 @@ export default function Landing() {
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPinIcon className="h-8 w-8 text-primary-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Venue</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Lugar</h3>
               <p className="text-gray-600">Hacienda Los Sueños</p>
-              <p className="text-2xl font-serif text-primary-600">Mexico City</p>
+              <p className="text-2xl font-serif text-primary-600">Ciudad de México</p>
             </div>
           </div>
         </div>
@@ -88,35 +88,35 @@ export default function Landing() {
       <section className="py-20 px-4 bg-gradient-to-b from-primary-50 to-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-8">
-            Our Story
+            Nuestra Historia
           </h2>
 
           <div className="space-y-6 text-gray-600 leading-relaxed">
             <p>
-              We met on a beautiful autumn day in 2020, and from that moment, we knew
-              there was something special between us. What started as a simple coffee
-              date turned into countless adventures, shared dreams, and a love that
-              grows stronger every day.
+              Nos conocimos en un hermoso día de otoño en 2020, y desde ese momento
+              supimos que había algo especial entre nosotros. Lo que comenzó como una
+              simple cita de café se convirtió en incontables aventuras, sueños
+              compartidos y un amor que crece más fuerte cada día.
             </p>
             <p>
-              After four wonderful years together, we're thrilled to begin this new
-              chapter of our lives surrounded by the people we love most. We can't
-              wait to celebrate with you!
+              Después de cuatro maravillosos años juntos, estamos emocionados de
+              comenzar este nuevo capítulo de nuestras vidas rodeados de las personas
+              que más queremos. ¡No podemos esperar para celebrar contigo!
             </p>
           </div>
 
           <div className="mt-12 flex justify-center gap-8">
             <div className="text-center">
               <p className="text-4xl font-serif text-primary-600">2020</p>
-              <p className="text-sm text-gray-500 mt-1">First Met</p>
+              <p className="text-sm text-gray-500 mt-1">Nos Conocimos</p>
             </div>
             <div className="text-center">
               <p className="text-4xl font-serif text-primary-600">2024</p>
-              <p className="text-sm text-gray-500 mt-1">Engaged</p>
+              <p className="text-sm text-gray-500 mt-1">Compromiso</p>
             </div>
             <div className="text-center">
               <p className="text-4xl font-serif text-primary-600">2026</p>
-              <p className="text-sm text-gray-500 mt-1">Wedding</p>
+              <p className="text-sm text-gray-500 mt-1">Boda</p>
             </div>
           </div>
         </div>
@@ -126,12 +126,12 @@ export default function Landing() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-12">
-            The Venue
+            El Lugar
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="bg-gray-200 rounded-lg h-64 md:h-80 flex items-center justify-center">
-              <span className="text-gray-500">Venue Photo</span>
+              <span className="text-gray-500">Foto del Lugar</span>
             </div>
 
             <div>
@@ -139,19 +139,19 @@ export default function Landing() {
                 Hacienda Los Sueños
               </h3>
               <p className="text-gray-600 mb-6">
-                Nestled in the heart of Mexico City, Hacienda Los Sueños offers a
-                romantic and elegant setting for our special day. With its beautiful
-                gardens, historic architecture, and stunning views, it's the perfect
-                place to celebrate our love.
+                Ubicada en el corazón de la Ciudad de México, Hacienda Los Sueños
+                ofrece un entorno romántico y elegante para nuestro día especial.
+                Con sus hermosos jardines, arquitectura histórica y vistas
+                impresionantes, es el lugar perfecto para celebrar nuestro amor.
               </p>
 
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <MapPinIcon className="h-5 w-5 text-primary-500 mt-0.5" />
                   <div>
-                    <p className="font-medium text-gray-900">Address</p>
+                    <p className="font-medium text-gray-900">Dirección</p>
                     <p className="text-gray-600">123 Avenida Principal, Col. Centro</p>
-                    <p className="text-gray-600">Mexico City, CDMX 06000</p>
+                    <p className="text-gray-600">Ciudad de México, CDMX 06000</p>
                   </div>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function Landing() {
                 className="inline-flex items-center gap-2 mt-6 text-primary-600 hover:text-primary-700 font-medium"
               >
                 <MapPinIcon className="h-5 w-5" />
-                View on Google Maps
+                Ver en Google Maps
               </a>
             </div>
           </div>
@@ -174,10 +174,10 @@ export default function Landing() {
       <section className="py-20 px-4 bg-gradient-to-b from-primary-50 to-white">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-4">
-            Where to Stay
+            Dónde Hospedarte
           </h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            We've partnered with nearby hotels for special rates. Here are our top recommendations for your stay.
+            Hemos conseguido tarifas especiales en hoteles cercanos. Aquí están nuestras mejores recomendaciones para tu estancia.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -185,40 +185,40 @@ export default function Landing() {
               {
                 name: 'Hotel Condesa DF',
                 address: 'Av. Veracruz 102, Condesa',
-                distance: '10 min from venue',
+                distance: '10 min del lugar',
                 priceRange: '$$$',
                 rating: 4.8,
-                features: ['Rooftop bar', 'Free breakfast'],
+                features: ['Terraza bar', 'Desayuno incluido'],
                 mapsUrl: 'https://maps.google.com/?q=Hotel+Condesa+DF+Mexico+City',
                 bookingUrl: 'https://www.booking.com/hotel/mx/condesa-df.html',
               },
               {
                 name: 'Gran Hotel Ciudad de México',
                 address: 'Av. 16 de Septiembre 82, Centro',
-                distance: '15 min from venue',
+                distance: '15 min del lugar',
                 priceRange: '$$$$',
                 rating: 4.9,
-                features: ['Historic building', 'Spa'],
+                features: ['Edificio histórico', 'Spa'],
                 mapsUrl: 'https://maps.google.com/?q=Gran+Hotel+Ciudad+de+Mexico',
                 bookingUrl: 'https://www.booking.com/hotel/mx/gran-ciudad-de-mexico.html',
               },
               {
                 name: 'Hotel Carlota',
                 address: 'Río Amazonas 73, Cuauhtémoc',
-                distance: '12 min from venue',
+                distance: '12 min del lugar',
                 priceRange: '$$',
                 rating: 4.5,
-                features: ['Pool', 'Modern design'],
+                features: ['Alberca', 'Diseño moderno'],
                 mapsUrl: 'https://maps.google.com/?q=Hotel+Carlota+Mexico+City',
                 bookingUrl: 'https://www.booking.com/hotel/mx/carlota.html',
               },
               {
                 name: 'Fiesta Americana Reforma',
                 address: 'Paseo de la Reforma 80',
-                distance: '20 min from venue',
+                distance: '20 min del lugar',
                 priceRange: '$$$',
                 rating: 4.6,
-                features: ['Business center', 'Gym'],
+                features: ['Centro de negocios', 'Gimnasio'],
                 mapsUrl: 'https://maps.google.com/?q=Fiesta+Americana+Reforma+Mexico+City',
                 bookingUrl: 'https://www.booking.com/hotel/mx/fiesta-americana-reforma.html',
               },
@@ -265,7 +265,7 @@ export default function Landing() {
                         className="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-primary-600 transition-colors"
                       >
                         <MapPinIcon className="h-4 w-4" />
-                        View Map
+                        Ver Mapa
                       </a>
                       <a
                         href={hotel.bookingUrl}
@@ -273,7 +273,7 @@ export default function Landing() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700 transition-colors"
                       >
-                        Book Now →
+                        Reservar →
                       </a>
                     </div>
                   </div>
@@ -283,7 +283,7 @@ export default function Landing() {
           </div>
 
           <p className="text-center text-sm text-gray-500 mt-8">
-            Mention "Lili & José Wedding" when booking for special rates.
+            Menciona "Boda Lili & José" al reservar para obtener tarifas especiales.
           </p>
         </div>
       </section>
@@ -292,17 +292,17 @@ export default function Landing() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-serif text-center text-gray-900 mb-12">
-            Wedding Day Schedule
+            Programa del Día
           </h2>
 
           <div className="space-y-0">
             {[
-              { time: '4:00 PM', event: 'Guest Arrival', description: 'Welcome drinks and seating' },
-              { time: '4:30 PM', event: 'Ceremony', description: 'Exchange of vows' },
-              { time: '5:30 PM', event: 'Cocktail Hour', description: 'Appetizers and drinks in the garden' },
-              { time: '7:00 PM', event: 'Reception', description: 'Dinner, toasts, and celebration' },
-              { time: '9:00 PM', event: 'Dancing', description: 'Party time!' },
-              { time: '12:00 AM', event: 'Farewell', description: 'Thank you for celebrating with us' },
+              { time: '4:00 PM', event: 'Llegada de Invitados', description: 'Bebidas de bienvenida y ubicación' },
+              { time: '4:30 PM', event: 'Ceremonia', description: 'Intercambio de votos' },
+              { time: '5:30 PM', event: 'Hora del Cóctel', description: 'Aperitivos y bebidas en el jardín' },
+              { time: '7:00 PM', event: 'Recepción', description: 'Cena, brindis y celebración' },
+              { time: '9:00 PM', event: 'Baile', description: '¡A bailar!' },
+              { time: '12:00 AM', event: 'Despedida', description: 'Gracias por celebrar con nosotros' },
             ].map((item, index) => (
               <div key={index} className="flex gap-6 items-start">
                 <div className="flex flex-col items-center">
@@ -324,17 +324,17 @@ export default function Landing() {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-8">
-            Dress Code
+            Código de Vestimenta
           </h2>
 
           <div className="bg-primary-50 rounded-2xl p-8">
             <p className="text-2xl font-serif text-primary-700 mb-4">
-              Formal / Black Tie Optional
+              Formal / Etiqueta Opcional
             </p>
             <p className="text-gray-600">
-              We kindly request that guests dress in formal attire.
-              Gentlemen are encouraged to wear suits or tuxedos, and ladies
-              may wear floor-length gowns or elegant cocktail dresses.
+              Les pedimos amablemente asistir con vestimenta formal.
+              Los caballeros pueden usar traje o esmoquin, y las damas
+              vestidos largos o de cóctel elegantes.
             </p>
           </div>
         </div>
@@ -344,7 +344,7 @@ export default function Landing() {
       <footer className="py-12 px-4 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-serif mb-4">Lili & José</h2>
-          <p className="text-gray-400 mb-6">June 15, 2026</p>
+          <p className="text-gray-400 mb-6">15 de Junio, 2026</p>
 
           <div className="flex items-center justify-center gap-4 text-gray-400">
             <span className="w-16 h-px bg-gray-700"></span>
@@ -353,7 +353,7 @@ export default function Landing() {
           </div>
 
           <p className="mt-6 text-gray-500 text-sm">
-            If you have any questions, please contact us at{' '}
+            Si tienes alguna pregunta, contáctanos en{' '}
             <a href="mailto:liliyjose@bodaliliyjose.com" className="text-primary-400 hover:text-primary-300">
               liliyjose@bodaliliyjose.com
             </a>

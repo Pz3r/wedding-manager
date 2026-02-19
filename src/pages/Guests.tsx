@@ -101,14 +101,14 @@ export default function Guests() {
     <div>
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Guests</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Invitados</h1>
           <p className="mt-1 text-sm text-gray-500">
-            Manage your wedding guest list ({guests.length} guests)
+            Administra tu lista de invitados ({guests.length} invitados)
           </p>
         </div>
         <Button onClick={handleAddGuest}>
           <PlusIcon className="h-5 w-5 mr-1" />
-          Add Guest
+          Agregar Invitado
         </Button>
       </div>
 
@@ -137,18 +137,18 @@ export default function Guests() {
       <Modal
         isOpen={!!deletingGuest}
         onClose={() => setDeletingGuest(null)}
-        title="Delete Guest"
+        title="Eliminar Invitado"
       >
         <p className="text-sm text-gray-500 mb-4">
-          Are you sure you want to delete <strong>{deletingGuest?.name}</strong>? This action cannot
-          be undone and will also delete any associated invitations.
+          ¿Estás seguro de que quieres eliminar a <strong>{deletingGuest?.name}</strong>? Esta acción no se
+          puede deshacer y también eliminará las invitaciones asociadas.
         </p>
         <div className="flex justify-end space-x-3">
           <Button variant="secondary" onClick={() => setDeletingGuest(null)}>
-            Cancel
+            Cancelar
           </Button>
           <Button variant="danger" onClick={handleDeleteConfirm}>
-            Delete
+            Eliminar
           </Button>
         </div>
       </Modal>
@@ -157,18 +157,18 @@ export default function Guests() {
       <Modal
         isOpen={!!sendingToGuest}
         onClose={() => setSendingToGuest(null)}
-        title={sendingToGuest?.invitations?.length ? 'Resend Invitation' : 'Send Invitation'}
+        title={sendingToGuest?.invitations?.length ? 'Reenviar Invitación' : 'Enviar Invitación'}
       >
         <p className="text-sm text-gray-500 mb-4">
-          {sendingToGuest?.invitations?.length ? 'Resend' : 'Send'} a wedding invitation to{' '}
-          <strong>{sendingToGuest?.name}</strong> at <strong>{sendingToGuest?.email}</strong>?
+          ¿{sendingToGuest?.invitations?.length ? 'Reenviar' : 'Enviar'} invitación de boda a{' '}
+          <strong>{sendingToGuest?.name}</strong> a <strong>{sendingToGuest?.email}</strong>?
         </p>
         <div className="flex justify-end space-x-3">
           <Button variant="secondary" onClick={() => setSendingToGuest(null)}>
-            Cancel
+            Cancelar
           </Button>
           <Button onClick={handleSendInvitation} loading={sending}>
-            {sendingToGuest?.invitations?.length ? 'Resend Invitation' : 'Send Invitation'}
+            {sendingToGuest?.invitations?.length ? 'Reenviar Invitación' : 'Enviar Invitación'}
           </Button>
         </div>
       </Modal>
@@ -177,25 +177,25 @@ export default function Guests() {
       <Modal
         isOpen={!!whatsappGuest}
         onClose={() => setWhatsappGuest(null)}
-        title="Send via WhatsApp"
+        title="Enviar por WhatsApp"
       >
         <p className="text-sm text-gray-500 mb-4">
-          Send a wedding invitation to <strong>{whatsappGuest?.name}</strong> via WhatsApp
-          at <strong>{whatsappGuest?.phone}</strong>?
+          ¿Enviar invitación de boda a <strong>{whatsappGuest?.name}</strong> por WhatsApp
+          al <strong>{whatsappGuest?.phone}</strong>?
         </p>
         <p className="text-xs text-gray-400 mb-4">
-          This will open WhatsApp with a pre-composed message containing the RSVP link.
+          Se abrirá WhatsApp con un mensaje precompuesto que contiene el enlace de confirmación.
         </p>
         <div className="flex justify-end space-x-3">
           <Button variant="secondary" onClick={() => setWhatsappGuest(null)}>
-            Cancel
+            Cancelar
           </Button>
           <Button
             onClick={handleSendWhatsApp}
             loading={sending}
             className="bg-green-600 hover:bg-green-700 focus:ring-green-500"
           >
-            Open WhatsApp
+            Abrir WhatsApp
           </Button>
         </div>
       </Modal>

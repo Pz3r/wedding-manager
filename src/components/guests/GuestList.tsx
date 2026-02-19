@@ -29,7 +29,7 @@ function getLatestInvitationStatus(guest: GuestWithInvitation): InvitationStatus
 
 function getStatusBadge(status: InvitationStatus | null) {
   if (!status) {
-    return <Badge variant="gray">Not Invited</Badge>;
+    return <Badge variant="gray">Sin Invitar</Badge>;
   }
 
   const variants: Record<InvitationStatus, 'gray' | 'blue' | 'yellow' | 'green'> = {
@@ -40,10 +40,10 @@ function getStatusBadge(status: InvitationStatus | null) {
   };
 
   const labels: Record<InvitationStatus, string> = {
-    pending: 'Pending',
-    sent: 'Sent',
-    opened: 'Opened',
-    responded: 'Responded',
+    pending: 'Pendiente',
+    sent: 'Enviada',
+    opened: 'Abierta',
+    responded: 'Respondida',
   };
 
   return <Badge variant={variants[status]}>{labels[status]}</Badge>;
@@ -54,8 +54,8 @@ export default function GuestList({ guests, onEdit, onDelete, onSendInvitation, 
     return (
       <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
         <EnvelopeIcon className="mx-auto h-12 w-12 text-gray-400" />
-        <h3 className="mt-2 text-sm font-medium text-gray-900">No guests yet</h3>
-        <p className="mt-1 text-sm text-gray-500">Get started by adding your first guest.</p>
+        <h3 className="mt-2 text-sm font-medium text-gray-900">No hay invitados aún</h3>
+        <p className="mt-1 text-sm text-gray-500">Comienza agregando tu primer invitado.</p>
       </div>
     );
   }
@@ -66,19 +66,19 @@ export default function GuestList({ guests, onEdit, onDelete, onSendInvitation, 
         <thead className="bg-gray-50">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Guest
+              Invitado
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Group
+              Grupo
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Expected
+              Esperados
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Status
+              Estado
             </th>
             <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Actions
+              Acciones
             </th>
           </tr>
         </thead>
@@ -107,7 +107,7 @@ export default function GuestList({ guests, onEdit, onDelete, onSendInvitation, 
                         variant="secondary"
                         size="sm"
                         onClick={() => onSendInvitation(guest)}
-                        title={status === 'sent' ? 'Resend Invitation via Email' : 'Send Invitation via Email'}
+                        title={status === 'sent' ? 'Reenviar invitación por correo' : 'Enviar invitación por correo'}
                       >
                         <EnvelopeIcon className="h-4 w-4" />
                       </Button>
@@ -117,7 +117,7 @@ export default function GuestList({ guests, onEdit, onDelete, onSendInvitation, 
                         variant="secondary"
                         size="sm"
                         onClick={() => onSendWhatsApp(guest)}
-                        title="Send Invitation via WhatsApp"
+                        title="Enviar invitación por WhatsApp"
                         className="text-green-600 hover:text-green-700 hover:bg-green-50"
                       >
                         <WhatsAppIcon className="h-4 w-4" />
@@ -127,7 +127,7 @@ export default function GuestList({ guests, onEdit, onDelete, onSendInvitation, 
                       variant="secondary"
                       size="sm"
                       onClick={() => onEdit(guest)}
-                      title="Edit"
+                      title="Editar"
                     >
                       <PencilIcon className="h-4 w-4" />
                     </Button>
@@ -135,7 +135,7 @@ export default function GuestList({ guests, onEdit, onDelete, onSendInvitation, 
                       variant="secondary"
                       size="sm"
                       onClick={() => onDelete(guest)}
-                      title="Delete"
+                      title="Eliminar"
                     >
                       <TrashIcon className="h-4 w-4" />
                     </Button>

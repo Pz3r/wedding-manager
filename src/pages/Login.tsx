@@ -31,8 +31,8 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h1 className="text-center text-3xl font-bold text-gray-900">Wedding Guest Manager</h1>
-          <h2 className="mt-6 text-center text-xl text-gray-600">Sign in to your account</h2>
+          <h1 className="text-center text-3xl font-bold text-gray-900">Gestor de Invitados</h1>
+          <h2 className="mt-6 text-center text-xl text-gray-600">Inicia sesión en tu cuenta</h2>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -44,36 +44,36 @@ export default function Login() {
 
           <div className="space-y-4">
             <Input
-              label="Email address"
+              label="Correo electrónico"
               type="email"
               name="email"
               autoComplete="email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder="tu@ejemplo.com"
             />
 
             <Input
-              label="Password"
+              label="Contraseña"
               type="password"
               name="password"
               autoComplete="current-password"
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Your password"
+              placeholder="Tu contraseña"
             />
           </div>
 
           <Button type="submit" loading={loading} className="w-full">
-            Sign in
+            Iniciar sesión
           </Button>
 
           <p className="text-center text-sm text-gray-600">
-            Don't have an account?{' '}
+            ¿No tienes cuenta?{' '}
             <Link to="/register" className="font-medium text-primary-600 hover:text-primary-500">
-              Sign up
+              Regístrate
             </Link>
           </p>
         </form>

@@ -18,21 +18,21 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/dashboard" className="flex items-center">
-              <span className="text-xl font-bold text-primary-600">Wedding Manager</span>
+              <span className="text-xl font-bold text-primary-600">Gestor de Boda</span>
             </Link>
 
             <div className="hidden sm:ml-10 sm:flex sm:space-x-4">
               <NavLink to="/dashboard" icon={HomeIcon}>
-                Dashboard
+                Panel
               </NavLink>
               <NavLink to="/guests" icon={UserGroupIcon}>
-                Guests
+                Invitados
               </NavLink>
               <NavLink to="/invitations" icon={EnvelopeIcon}>
-                Invitations
+                Invitaciones
               </NavLink>
               <NavLink to="/responses" icon={ClipboardDocumentCheckIcon}>
-                Responses
+                Respuestas
               </NavLink>
             </div>
           </div>
@@ -41,7 +41,7 @@ export default function Navbar() {
             <span className="text-sm text-gray-500 hidden sm:block">{user?.email}</span>
             <Button variant="secondary" size="sm" onClick={signOut}>
               <ArrowRightOnRectangleIcon className="h-4 w-4 mr-1" />
-              Sign out
+              Salir
             </Button>
           </div>
         </div>
@@ -51,16 +51,16 @@ export default function Navbar() {
       <div className="sm:hidden border-t border-gray-200">
         <div className="flex justify-around py-2">
           <MobileNavLink to="/dashboard" icon={HomeIcon}>
-            Dashboard
+            Panel
           </MobileNavLink>
           <MobileNavLink to="/guests" icon={UserGroupIcon}>
-            Guests
+            Invitados
           </MobileNavLink>
           <MobileNavLink to="/invitations" icon={EnvelopeIcon}>
-            Invitations
+            Invitaciones
           </MobileNavLink>
           <MobileNavLink to="/responses" icon={ClipboardDocumentCheckIcon}>
-            Responses
+            Respuestas
           </MobileNavLink>
         </div>
       </div>

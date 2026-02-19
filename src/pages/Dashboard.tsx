@@ -104,39 +104,39 @@ export default function Dashboard() {
 
   const statCards = [
     {
-      name: 'Total Guests',
+      name: 'Total Invitados',
       value: stats?.totalGuests || 0,
       icon: UserGroupIcon,
       color: 'bg-blue-500',
       link: '/guests',
     },
     {
-      name: 'Invitations Sent',
+      name: 'Invitaciones Enviadas',
       value: stats?.invitationsSent || 0,
       icon: EnvelopeIcon,
       color: 'bg-purple-500',
       link: '/invitations',
     },
     {
-      name: 'Confirmed',
+      name: 'Confirmados',
       value: stats?.confirmed || 0,
       icon: CheckCircleIcon,
       color: 'bg-green-500',
     },
     {
-      name: 'Declined',
+      name: 'Declinaron',
       value: stats?.declined || 0,
       icon: XCircleIcon,
       color: 'bg-red-500',
     },
     {
-      name: 'Awaiting Response',
+      name: 'Esperando Respuesta',
       value: stats?.pending || 0,
       icon: ClockIcon,
       color: 'bg-yellow-500',
     },
     {
-      name: 'Total Attendees',
+      name: 'Total Asistentes',
       value: stats?.totalAttendees || 0,
       icon: UsersIcon,
       color: 'bg-primary-500',
@@ -146,8 +146,8 @@ export default function Dashboard() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="mt-1 text-sm text-gray-500">Overview of your wedding guest management</p>
+        <h1 className="text-2xl font-bold text-gray-900">Panel</h1>
+        <p className="mt-1 text-sm text-gray-500">Resumen de la gestión de invitados de tu boda</p>
       </div>
 
       {/* Stats Grid */}
@@ -173,7 +173,7 @@ export default function Dashboard() {
                   to={stat.link}
                   className="text-sm font-medium text-primary-600 hover:text-primary-500"
                 >
-                  View all →
+                  Ver todos →
                 </Link>
               </div>
             )}
@@ -183,22 +183,22 @@ export default function Dashboard() {
 
       {/* Quick Actions */}
       <div className="bg-white shadow-sm rounded-lg border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Acciones Rápidas</h2>
         <div className="flex flex-wrap gap-3">
           <Link to="/guests">
             <Button>
               <UserGroupIcon className="h-5 w-5 mr-2" />
-              Add Guests
+              Agregar Invitados
             </Button>
           </Link>
           <Link to="/invitations">
             <Button variant="secondary">
               <EnvelopeIcon className="h-5 w-5 mr-2" />
-              View Invitations
+              Ver Invitaciones
             </Button>
           </Link>
           <Button variant="secondary" onClick={() => exportGuestList(stats)}>
-            Export Guest List (CSV)
+            Exportar Lista de Invitados (CSV)
           </Button>
         </div>
       </div>
@@ -206,16 +206,16 @@ export default function Dashboard() {
       {/* Response Summary */}
       {stats && stats.invitationsSent > 0 && (
         <div className="mt-8 bg-white shadow-sm rounded-lg border border-gray-200 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Response Summary</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Resumen de Respuestas</h2>
           <div className="space-y-4">
             <ProgressBar
-              label="Response Rate"
+              label="Tasa de Respuesta"
               value={stats.confirmed + stats.declined}
               max={stats.invitationsSent}
               color="bg-primary-500"
             />
             <ProgressBar
-              label="Confirmed Attendance"
+              label="Asistencia Confirmada"
               value={stats.confirmed}
               max={stats.confirmed + stats.declined || 1}
               color="bg-green-500"
@@ -260,5 +260,5 @@ function ProgressBar({
 
 async function exportGuestList(stats: DashboardStats | null) {
   // This is a placeholder - in a real app, you'd fetch all guest data and create a CSV
-  alert('CSV export feature coming soon! Total guests: ' + (stats?.totalGuests || 0));
+  alert('Función de exportación CSV próximamente. Total de invitados: ' + (stats?.totalGuests || 0));
 }

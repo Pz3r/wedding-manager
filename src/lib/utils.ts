@@ -19,7 +19,7 @@ export function getWhatsAppUrl(phone: string, message: string): string {
 }
 
 export function formatDate(date: string | Date): string {
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat('es-MX', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
@@ -27,7 +27,7 @@ export function formatDate(date: string | Date): string {
 }
 
 export function formatDateTime(date: string | Date): string {
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat('es-MX', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',

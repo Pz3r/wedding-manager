@@ -46,14 +46,14 @@ export default function GuestForm({ isOpen, onClose, onSubmit, guest }: GuestFor
       await onSubmit(formData);
       onClose();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong');
+      setError(err instanceof Error ? err.message : 'Algo salió mal');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={guest ? 'Edit Guest' : 'Add Guest'}>
+    <Modal isOpen={isOpen} onClose={onClose} title={guest ? 'Editar Invitado' : 'Agregar Invitado'}>
       <form onSubmit={handleSubmit} className="space-y-4">
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
@@ -62,44 +62,44 @@ export default function GuestForm({ isOpen, onClose, onSubmit, guest }: GuestFor
         )}
 
         <Input
-          label="Full Name"
+          label="Nombre completo"
           name="name"
           required
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          placeholder="John Doe"
+          placeholder="Juan Pérez"
         />
 
         <Input
-          label="Email"
+          label="Correo electrónico"
           type="email"
           name="email"
           required
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          placeholder="john@example.com"
+          placeholder="juan@ejemplo.com"
         />
 
         <Input
-          label="Phone (optional)"
+          label="Teléfono (opcional)"
           type="tel"
           name="phone"
           value={formData.phone}
           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          placeholder="+1 234 567 8900"
+          placeholder="+52 55 1234 5678"
         />
 
         <Input
-          label="Group (optional)"
+          label="Grupo (opcional)"
           name="group_name"
           value={formData.group_name}
           onChange={(e) => setFormData({ ...formData, group_name: e.target.value })}
-          placeholder="e.g., Bride's Family, Groom's Friends"
+          placeholder="ej., Familia de la Novia, Amigos del Novio"
         />
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Expected Attendees
+            Asistentes esperados
           </label>
           <select
             value={formData.expected_attendees || 1}
@@ -110,21 +110,21 @@ export default function GuestForm({ isOpen, onClose, onSubmit, guest }: GuestFor
           >
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
               <option key={num} value={num}>
-                {num} {num === 1 ? 'person' : 'people'}
+                {num} {num === 1 ? 'persona' : 'personas'}
               </option>
             ))}
           </select>
           <p className="mt-1 text-xs text-gray-500">
-            How many people can this guest bring (including themselves)
+            Cuántas personas puede traer este invitado (incluyéndose)
           </p>
         </div>
 
         <div className="flex justify-end space-x-3 pt-4">
           <Button type="button" variant="secondary" onClick={onClose}>
-            Cancel
+            Cancelar
           </Button>
           <Button type="submit" loading={loading}>
-            {guest ? 'Save Changes' : 'Add Guest'}
+            {guest ? 'Guardar Cambios' : 'Agregar Invitado'}
           </Button>
         </div>
       </form>

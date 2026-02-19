@@ -36,18 +36,18 @@ export default function Invitations() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Invitations</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Invitaciones</h1>
         <p className="mt-1 text-sm text-gray-500">
-          Track invitation status and RSVP responses ({invitations.length} invitations)
+          Seguimiento de invitaciones y respuestas ({invitations.length} invitaciones)
         </p>
       </div>
 
       {invitations.length === 0 ? (
         <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
           <EnvelopeIcon className="mx-auto h-12 w-12 text-gray-400" />
-          <h3 className="mt-2 text-sm font-medium text-gray-900">No invitations sent</h3>
+          <h3 className="mt-2 text-sm font-medium text-gray-900">No se han enviado invitaciones</h3>
           <p className="mt-1 text-sm text-gray-500">
-            Go to the Guests page to send invitations.
+            Ve a la página de Invitados para enviar invitaciones.
           </p>
         </div>
       ) : (
@@ -56,19 +56,19 @@ export default function Invitations() {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Guest
+                  Invitado
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Status
+                  Estado
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   RSVP
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Sent
+                  Enviada
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Last Updated
+                  Última Actualización
                 </th>
               </tr>
             </thead>
@@ -97,13 +97,13 @@ export default function Invitations() {
                               <CheckCircleIcon className="h-5 w-5 text-green-500 mr-1" />
                             )}
                             <span className={`text-sm ${invitation.rsvp_responses.party_size < invitation.guests.expected_attendees ? 'text-yellow-700' : 'text-green-700'}`}>
-                              Attending ({invitation.rsvp_responses.party_size} of {invitation.guests.expected_attendees})
+                              Asiste ({invitation.rsvp_responses.party_size} de {invitation.guests.expected_attendees})
                             </span>
                           </>
                         ) : (
                           <>
                             <XCircleIcon className="h-5 w-5 text-red-500 mr-1" />
-                            <span className="text-sm text-red-700">Declined</span>
+                            <span className="text-sm text-red-700">Declinó</span>
                           </>
                         )}
                       </div>

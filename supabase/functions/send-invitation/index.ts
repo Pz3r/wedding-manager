@@ -159,26 +159,26 @@ Si tienes preguntas, responde a este correo.`,
 </head>
 <body>
   <div class="header">
-    <h1>You're Invited!</h1>
+    <h1>¡Estás Invitado/a!</h1>
   </div>
 
   <div class="content">
-    <p>Dear <strong>${guestName}</strong>,</p>
+    <p>Querido/a <strong>${guestName}</strong>,</p>
 
-    <p>We are thrilled to invite you to celebrate our special day with us!</p>
+    <p>¡Estamos muy emocionados de invitarte a celebrar nuestro día especial!</p>
 
-    <p>Please click the button below to confirm your attendance and let us know your preferences.</p>
+    <p>Por favor, haz clic en el botón de abajo para confirmar tu asistencia y hacernos saber tus preferencias.</p>
 
-    <a href="${rsvpUrl}" class="button">RSVP Now</a>
+    <a href="${rsvpUrl}" class="button">Confirmar Asistencia</a>
 
     <p style="font-size: 14px; color: #666; margin-top: 20px;">
-      If the button doesn't work, copy and paste this link into your browser:<br>
+      Si el botón no funciona, copia y pega este enlace en tu navegador:<br>
       <a href="${rsvpUrl}">${rsvpUrl}</a>
     </p>
   </div>
 
   <div class="footer">
-    <p>We can't wait to celebrate with you!</p>
+    <p>¡No podemos esperar para celebrar contigo!</p>
   </div>
 </body>
 </html>

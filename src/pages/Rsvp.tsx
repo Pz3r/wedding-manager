@@ -32,7 +32,7 @@ export default function Rsvp() {
   useEffect(() => {
     const fetchInvitation = async () => {
       if (!token) {
-        setError('Invalid invitation link');
+        setError('Enlace de invitación inválido');
         setLoading(false);
         return;
       }
@@ -53,7 +53,7 @@ export default function Rsvp() {
         if (fetchError) throw fetchError;
 
         if (!data || data.length === 0) {
-          setError('Invitation not found or has expired');
+          setError('Invitación no encontrada o ha expirado');
           return;
         }
 
@@ -78,7 +78,7 @@ export default function Rsvp() {
           }));
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load invitation');
+        setError(err instanceof Error ? err.message : 'Error al cargar la invitación');
       } finally {
         setLoading(false);
       }
@@ -135,7 +135,7 @@ export default function Rsvp() {
 
       setSubmitted(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to submit RSVP');
+      setError(err instanceof Error ? err.message : 'Error al enviar la confirmación');
     } finally {
       setSubmitting(false);
     }
@@ -154,7 +154,7 @@ export default function Rsvp() {
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 p-4">
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full text-center">
           <div className="text-red-500 text-5xl mb-4">😕</div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Oops!</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">¡Ups!</h1>
           <p className="text-gray-600">{error}</p>
         </div>
       </div>
@@ -167,38 +167,38 @@ export default function Rsvp() {
         <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full text-center">
           <div className="text-5xl mb-4">{formData.attending ? '🎉' : '💔'}</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            {formData.attending ? 'Thank You!' : "We'll Miss You!"}
+            {formData.attending ? '¡Gracias!' : '¡Te extrañaremos!'}
           </h1>
           <p className="text-gray-600 mb-4">
             {formData.attending
-              ? `We're so excited to celebrate with you${
-                  formData.party_size > 1 ? ` and your ${formData.party_size - 1} guest(s)` : ''
+              ? `¡Estamos muy emocionados de celebrar contigo${
+                  formData.party_size > 1 ? ` y tus ${formData.party_size - 1} acompañante(s)` : ''
                 }!`
-              : "Thank you for letting us know. We'll miss having you there!"}
+              : '¡Gracias por avisarnos. Te extrañaremos mucho!'}
           </p>
           {formData.attending && (
             <div className="bg-primary-50 rounded-lg p-4 text-left">
-              <h3 className="font-medium text-primary-900 mb-2">Your RSVP Details:</h3>
+              <h3 className="font-medium text-primary-900 mb-2">Detalles de tu confirmación:</h3>
               <ul className="text-sm text-primary-700 space-y-1">
-                <li>Party size: {formData.party_size}</li>
+                <li>Tamaño del grupo: {formData.party_size}</li>
                 {formData.dietary_restrictions && (
-                  <li>Dietary needs: {formData.dietary_restrictions}</li>
+                  <li>Requisitos dietéticos: {formData.dietary_restrictions}</li>
                 )}
                 {formData.notes && (
-                  <li>Notes: {formData.notes}</li>
+                  <li>Notas: {formData.notes}</li>
                 )}
               </ul>
             </div>
           )}
           <p className="text-sm text-gray-500 mt-6">
-            Need to make changes? Just refresh this page and update your response.
+            ¿Necesitas hacer cambios? Actualiza tu respuesta a continuación.
           </p>
           <Button
             variant="secondary"
             className="mt-4"
             onClick={() => setSubmitted(false)}
           >
-            Update Response
+            Actualizar Respuesta
           </Button>
         </div>
       </div>
@@ -211,8 +211,8 @@ export default function Rsvp() {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-primary-500 to-primary-600 px-6 py-8 text-center text-white">
-            <h1 className="text-3xl font-bold mb-2">You're Invited!</h1>
-            <p className="opacity-90">Dear {invitation?.guest_name}</p>
+            <h1 className="text-3xl font-bold mb-2">¡Estás Invitado/a!</h1>
+            <p className="opacity-90">Querido/a {invitation?.guest_name}</p>
           </div>
 
           {/* Form */}
@@ -220,7 +220,7 @@ export default function Rsvp() {
             {/* Attending Toggle */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                Will you be attending?
+                ¿Asistirás?
               </label>
               <div className="flex space-x-4">
                 <button
@@ -232,7 +232,7 @@ export default function Rsvp() {
                       : 'border-gray-200 text-gray-500 hover:border-gray-300'
                   }`}
                 >
-                  ✓ Yes, I'll be there!
+                  ✓ ¡Sí, ahí estaré!
                 </button>
                 <button
                   type="button"
@@ -243,7 +243,7 @@ export default function Rsvp() {
                       : 'border-gray-200 text-gray-500 hover:border-gray-300'
                   }`}
                 >
-                  ✗ Sorry, can't make it
+                  ✗ Lo siento, no podré asistir
                 </button>
               </div>
             </div>
@@ -253,7 +253,7 @@ export default function Rsvp() {
                 {/* Party Size */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    How many people in your party? (including yourself)
+                    ¿Cuántas personas en tu grupo? (incluyéndote)
                   </label>
                   <select
                     value={formData.party_size}
@@ -264,13 +264,13 @@ export default function Rsvp() {
                   >
                     {Array.from({ length: invitation?.expected_attendees || 1 }, (_, i) => i + 1).map((num) => (
                       <option key={num} value={num}>
-                        {num} {num === 1 ? 'person' : 'people'}
+                        {num} {num === 1 ? 'persona' : 'personas'}
                       </option>
                     ))}
                   </select>
                   {(invitation?.expected_attendees || 1) > 1 && (
                     <p className="mt-1 text-xs text-gray-500">
-                      You can bring up to {(invitation?.expected_attendees || 1) - 1} guest(s)
+                      Puedes traer hasta {(invitation?.expected_attendees || 1) - 1} acompañante(s)
                     </p>
                   )}
                 </div>
@@ -278,13 +278,13 @@ export default function Rsvp() {
                 {/* Dietary Restrictions */}
                 <div>
                   <Input
-                    label="Any dietary restrictions or allergies?"
+                    label="¿Alguna restricción dietética o alergia?"
                     name="dietary"
                     value={formData.dietary_restrictions}
                     onChange={(e) =>
                       setFormData({ ...formData, dietary_restrictions: e.target.value })
                     }
-                    placeholder="e.g., Vegetarian, Gluten-free, Nut allergy"
+                    placeholder="ej., Vegetariano, Sin gluten, Alergia a nueces"
                   />
                 </div>
               </>
@@ -293,33 +293,33 @@ export default function Rsvp() {
             {/* Message */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Any message for the couple? (optional)
+                ¿Algún mensaje para los novios? (opcional)
               </label>
               <textarea
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 rows={3}
                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                placeholder="Share your well wishes..."
+                placeholder="Comparte tus buenos deseos..."
               />
             </div>
 
             {/* Notes */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Additional notes (optional)
+                Notas adicionales (opcional)
               </label>
               <textarea
                 value={formData.notes}
                 onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                 rows={2}
                 className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                placeholder="Any other information you'd like to share..."
+                placeholder="Cualquier otra información que quieras compartir..."
               />
             </div>
 
             <Button type="submit" loading={submitting} className="w-full" size="lg">
-              Submit RSVP
+              Confirmar Asistencia
             </Button>
           </form>
         </div>
