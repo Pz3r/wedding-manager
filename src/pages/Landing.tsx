@@ -292,10 +292,6 @@ export default function Landing() {
               </div>
             ))}
           </div>
-
-          <p className="text-center text-sm text-gray-500 mt-8">
-            Menciona "Boda Lili & José" al reservar para obtener tarifas especiales.
-          </p>
         </div>
       </section>
 
