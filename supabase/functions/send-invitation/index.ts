@@ -116,33 +116,46 @@ Si tienes preguntas, responde a este correo.`,
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
       line-height: 1.6;
-      color: #333;
+      color: #45171A;
       max-width: 600px;
       margin: 0 auto;
       padding: 20px;
+      background: #faf7f2;
     }
     .header {
       text-align: center;
       padding: 40px 0;
-      background: linear-gradient(135deg, #f5b3a9 0%, #e15d4c 100%);
+      background: linear-gradient(135deg, #45171A 0%, #660C13 100%);
       border-radius: 12px;
-      color: white;
+      color: #f5ede3;
       margin-bottom: 30px;
     }
     .header h1 {
       margin: 0;
       font-size: 28px;
+      color: #ffffff;
+    }
+    .header p {
+      margin: 8px 0 0;
+      color: #e8dac8;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
     .content {
-      background: #f9f9f9;
+      background: #ffffff;
       padding: 30px;
       border-radius: 12px;
       text-align: center;
+      border: 1px solid #e8dac8;
+    }
+    .content p {
+      color: #45171A;
     }
     .button {
       display: inline-block;
-      background: #e15d4c;
-      color: white !important;
+      background: #660C13;
+      color: #f5ede3 !important;
       padding: 14px 32px;
       text-decoration: none;
       border-radius: 8px;
@@ -152,33 +165,44 @@ Si tienes preguntas, responde a este correo.`,
     .footer {
       text-align: center;
       margin-top: 30px;
-      color: #666;
+      color: #911f31;
       font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <h1>¡Estás Invitado/a!</h1>
-  </div>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-radius: 12px; margin-bottom: 30px;">
+    <tr>
+      <td align="center" bgcolor="#45171A" style="background-color: #45171A; padding: 40px 0; border-radius: 12px;">
+        <p style="margin: 0 0 8px; color: #e8dac8; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;">Nos Casamos</p>
+        <h1 style="margin: 0; font-size: 28px; color: #ffffff; font-family: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;">Lili &amp; José</h1>
+      </td>
+    </tr>
+  </table>
 
   <div class="content">
     <p>Querido/a <strong>${guestName}</strong>,</p>
 
-    <p>¡Estamos muy emocionados de invitarte a celebrar nuestro día especial!</p>
+    <p>¡Estamos muy emocionados de invitarte a celebrar nuestra boda!</p>
 
-    <p>Por favor, haz clic en el botón de abajo para confirmar tu asistencia y hacernos saber tus preferencias.</p>
+    <p style="color: #3E8895; font-size: 18px; margin: 16px 0;">
+      <strong>24 de Octubre, 2026</strong><br>
+      Club Vergel Resort · Bernal, Qro
+    </p>
+
+    <p>Por favor, confirma tu asistencia haciendo clic en el botón.</p>
 
     <a href="${rsvpUrl}" class="button">Confirmar Asistencia</a>
 
-    <p style="font-size: 14px; color: #666; margin-top: 20px;">
+    <p style="font-size: 13px; color: #911f31; margin-top: 20px;">
       Si el botón no funciona, copia y pega este enlace en tu navegador:<br>
-      <a href="${rsvpUrl}">${rsvpUrl}</a>
+      <a href="${rsvpUrl}" style="color: #3E8895;">${rsvpUrl}</a>
     </p>
   </div>
 
   <div class="footer">
     <p>¡No podemos esperar para celebrar contigo!</p>
+    <p style="color: #C0A280;">Con cariño, Lili y José</p>
   </div>
 </body>
 </html>
