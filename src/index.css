@@ -1,17 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #fdf4f3;
-  --color-primary-100: #fce7e4;
-  --color-primary-200: #fad3cd;
-  --color-primary-300: #f5b3a9;
-  --color-primary-400: #ed8677;
-  --color-primary-500: #e15d4c;
-  --color-primary-600: #cd4231;
-  --color-primary-700: #ac3426;
-  --color-primary-800: #8e2e23;
-  --color-primary-900: #772b23;
-  --color-primary-950: #40130e;
+  /* Burgundy / Wine - primary brand color */
+  --color-primary-50: #fdf2f3;
+  --color-primary-100: #fce4e6;
+  --color-primary-200: #facdd2;
+  --color-primary-300: #f5a6af;
+  --color-primary-400: #ee7583;
+  --color-primary-500: #e3495b;
+  --color-primary-600: #cf2c42;
+  --color-primary-700: #ae2136;
+  --color-primary-800: #911f31;
+  --color-primary-900: #45171A;
+  --color-primary-950: #660C13;
+
+  /* Teal - accent color */
+  --color-accent-50: #f0fafb;
+  --color-accent-100: #d9f1f5;
+  --color-accent-200: #b8e3eb;
+  --color-accent-300: #87cedb;
+  --color-accent-400: #4fb1c3;
+  --color-accent-500: #3E8895;
+  --color-accent-600: #306d7a;
+  --color-accent-700: #2c5a65;
+  --color-accent-800: #254A50;
+  --color-accent-900: #253f45;
+  --color-accent-950: #13282e;
+
+  /* Warm tan/gold */
+  --color-warm-50: #faf7f2;
+  --color-warm-100: #f5ede3;
+  --color-warm-200: #e8dac8;
+  --color-warm-300: #d4c0a5;
+  --color-warm-400: #C0A280;
+  --color-warm-500: #b08e67;
+  --color-warm-600: #9a7753;
+  --color-warm-700: #806145;
+  --color-warm-800: #6a513c;
+  --color-warm-900: #584434;
+  --color-warm-950: #2f231a;
 }
 
 body {

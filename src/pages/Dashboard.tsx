@@ -183,7 +183,7 @@ export default function Dashboard() {
 
       {/* Quick Actions */}
       <div className="bg-white shadow-sm rounded-lg border border-gray-200 p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Acciones Rápidas</h2>
+        <h2 className="text-lg font-semibold text-primary-900 mb-4">Acciones Rápidas</h2>
         <div className="flex flex-wrap gap-3">
           <Link to="/guests">
             <Button>
