@@ -6,7 +6,6 @@ import {
   HeartIcon,
   BuildingOffice2Icon,
   StarIcon,
-  GiftIcon,
   BanknotesIcon,
 } from '@heroicons/react/24/outline';
 
