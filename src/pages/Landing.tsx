@@ -84,7 +84,7 @@ export default function Landing() {
           </div>
 
           <p className="text-xl md:text-2xl text-warm-200/90 font-light">
-            Junto a nuestras familias, te invitamos a celebrar nuestra boda
+            Te invitamos a celebrar nuestra boda
           </p>
         </div>
 
@@ -143,15 +143,19 @@ export default function Landing() {
 
           <div className="space-y-6 text-primary-800 leading-relaxed">
             <p>
-              Nos conocimos en un hermoso día de otoño en 2020, y desde ese momento
-              supimos que había algo especial entre nosotros. Lo que comenzó como una
-              simple cita de café se convirtió en incontables aventuras, sueños
-              compartidos y un amor que crece más fuerte cada día.
+              En septiembre de 2022, sin planes ni expectativas, el destino nos reunió en casa de nuestros amigos Julio y Lillian. Entre conversaciones espontáneas, copas de vino y risas compartidas, comenzó a surgir algo especial: una conexión serena pero profunda, de esas que sorprenden por su naturalidad.
             </p>
             <p>
-              Después de cuatro maravillosos años juntos, estamos emocionados de
-              comenzar este nuevo capítulo de nuestras vidas rodeados de las personas
-              que más queremos. ¡No podemos esperar para celebrar contigo!
+              El tiempo hizo lo suyo y, en diciembre, llegó nuestra primera cita. Fue el inicio de una historia que empezó a escribirse con intención, complicidad y la certeza de que queríamos seguir descubriéndonos.
+            </p>
+            <p>
+              En febrero de 2023, bajo el cielo abierto del semidesierto queretano, mientras esperábamos encontrar el cometa verde, encontramos algo aún más extraordinario: la confirmación de nuestro amor. Entre estrellas y silencio, decidimos caminar juntos. Desde entonces, cada día ha sido una aventura compartida, llena de momentos que nos han hecho crecer y enamorarnos aún más. Y ahora, con el corazón lleno de alegría, queremos invitarte a ser parte de la celebración de nuestro amor.
+            </p>
+            <p>
+              Dos hermosos años después, el hermoso bosque de la Sierra Gorda queretana fue testigo de nuestro compromiso. Rodeados de naturaleza, nuestros perritos Cooper, Harrys, Plaqueta y Molly, reafirmamos la promesa de seguir construyendo esta historia con la misma ilusión del primer día.             
+            </p>
+            <p>
+              Hoy, elegimos el Pueblo Mágico de Bernal como escenario para celebrar nuestro amor. Queremos compartir este momento con las personas que más amamos y comenzar una nueva etapa, acompañados de quienes han sido parte esencial de nuestro camino.
             </p>
           </div>
 
@@ -362,8 +366,8 @@ export default function Landing() {
           <div className="space-y-0">
             {[
               { time: '2:00 PM', event: 'Recepción', description: 'Llegada de invitados y bienvenida' },
-              { time: '2:30 PM', event: 'Ceremonia simbólica y civil', description: 'Intercambio de votos' },
-              { time: '4:00 PM', event: '¡Inicia la pachanga!', description: 'Música, baile y celebración' },
+              { time: '2:30 PM', event: 'Ceremonia', description: 'Intercambio de votos' },
+              { time: '4:00 PM', event: '¡Inicia la pachanga!', description: 'Comida, música, baile y celebración' },
               { time: '12:00 AM', event: 'Fin del evento', description: 'Gracias por celebrar con nosotros' },
             ].map((item, index) => (
               <div key={index} className="flex gap-6 items-start">
@@ -412,44 +416,44 @@ export default function Landing() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <a
-              href="https://www.ejemplo.com/mesa-de-regalos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 hover:shadow-md transition-shadow group"
-            >
-              <div className="w-16 h-16 bg-primary-950 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-900 transition-colors">
-                <GiftIcon className="h-8 w-8 text-white" />
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+              <div className="w-16 h-16 bg-primary-950 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BanknotesIcon className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-primary-900 mb-2">Mesa de Regalos</h3>
-              <p className="text-primary-800 text-sm mb-4">
-                Visita nuestra mesa de regalos en línea
-              </p>
-              <span className="inline-flex items-center gap-1 text-sm font-medium text-accent-500 group-hover:text-accent-600">
-                Ver mesa de regalos →
-              </span>
-            </a>
+              <h3 className="text-lg font-semibold text-primary-900 mb-2">Transferencia Bancaria</h3>
+              <div className="text-left bg-warm-50 rounded-lg p-4 space-y-2">
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Banco:</span>
+                  <span className="font-medium text-primary-900">BBVA</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">Titular:</span>
+                  <span className="font-medium text-primary-900">LILIANA MEDINA GUZMAN</span>
+                </div>
+                <div className="flex justify-between text-sm">
+                  <span className="text-gray-500">CLABE:</span>
+                  <span className="font-medium text-primary-900">012 680 02976925251 7</span>
+                </div>
+              </div>
+            </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
               <div className="w-16 h-16 bg-primary-950 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BanknotesIcon className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-lg font-semibold text-primary-900 mb-2">Transferencia Bancaria</h3>
-              <p className="text-primary-800 text-sm mb-4">
-                Si prefieres hacer una transferencia
-              </p>
               <div className="text-left bg-warm-50 rounded-lg p-4 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Banco:</span>
-                  <span className="font-medium text-primary-900">BANCO EJEMPLO</span>
+                  <span className="font-medium text-primary-900">SANTANDER</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Titular:</span>
-                  <span className="font-medium text-primary-900">NOMBRE DEL TITULAR</span>
+                  <span className="font-medium text-primary-900">JOSE CARLOS CRUCET</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">CLABE:</span>
-                  <span className="font-medium text-primary-900">0000 0000 0000 000000</span>
+                  <span className="font-medium text-primary-900">601 180 40005057352 9</span>
                 </div>
               </div>
             </div>
