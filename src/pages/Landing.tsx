@@ -444,7 +444,7 @@ export default function Landing() {
               <div className="text-left bg-warm-50 rounded-lg p-4 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Banco:</span>
-                  <span className="font-medium text-primary-900">SANTANDER</span>
+                  <span className="font-medium text-primary-900">GBM</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Titular:</span>
