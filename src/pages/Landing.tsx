@@ -160,11 +160,11 @@ export default function Landing() {
 
           <div className="mt-12 flex justify-center gap-8">
             <div className="text-center">
-              <p className="text-4xl font-serif text-accent-500">2020</p>
+              <p className="text-4xl font-serif text-accent-500">2022</p>
               <p className="text-sm text-gray-500 mt-1">Nos Conocimos</p>
             </div>
             <div className="text-center">
-              <p className="text-4xl font-serif text-accent-500">2024</p>
+              <p className="text-4xl font-serif text-accent-500">2025</p>
               <p className="text-sm text-gray-500 mt-1">Compromiso</p>
             </div>
             <div className="text-center">
