@@ -202,6 +202,9 @@ Si tienes preguntas, responde a este correo.`,
 
   <div class="footer">
     <p>¡No podemos esperar para celebrar contigo!</p>
+    <p style="margin-top: 12px;">
+      <a href="https://bodaliliyjose.com" style="color: #3E8895; text-decoration: none; font-weight: 600;">Ver todos los detalles de la boda →</a>
+    </p>
     <p style="color: #C0A280;">Con cariño, Lili y José</p>
   </div>
 </body>

@@ -190,7 +190,13 @@ export default function Rsvp() {
               </ul>
             </div>
           )}
-          <p className="text-sm text-gray-500 mt-6">
+          <a
+            href="/"
+            className="inline-block mt-6 text-sm font-semibold text-accent-500 hover:text-accent-600"
+          >
+            Ver todos los detalles de la boda →
+          </a>
+          <p className="text-sm text-gray-500 mt-4">
             ¿Necesitas hacer cambios? Actualiza tu respuesta a continuación.
           </p>
           <Button
