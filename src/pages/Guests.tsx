@@ -77,10 +77,12 @@ export default function Guests() {
     }
 
     const rsvpUrl = getRsvpUrl(token);
+    const appUrl = import.meta.env.VITE_APP_URL || window.location.origin;
     const message =
       `¡Hola ${whatsappGuest.name}! ` +
       `Estamos muy emocionados de invitarte a celebrar nuestra boda. ` +
       `Por favor, confirma tu asistencia aquí: ${rsvpUrl} ` +
+      `Ve todos los detalles de la boda aquí: ${appUrl} ` +
       `¡Esperamos verte pronto! Con cariño, Lili y José`;
 
     newWindow.location.href = getWhatsAppUrl(whatsappGuest.phone!, message);
