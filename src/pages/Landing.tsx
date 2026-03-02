@@ -234,7 +234,7 @@ export default function Landing() {
       {/* Hotels Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-warm-50 to-white">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif text-center text-primary-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-serif text-center text-primary-900 mb-12">
             Dónde Hospedarte
           </h2>
 
