@@ -202,9 +202,13 @@ Si tienes preguntas, responde a este correo.`,
 
   <div class="footer">
     <p>¡No podemos esperar para celebrar contigo!</p>
-    <p style="margin-top: 12px;">
-      <a href="https://bodaliliyjose.com" style="color: #3E8895; text-decoration: none; font-weight: 600;">Ver todos los detalles de la boda →</a>
-    </p>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top: 16px;">
+      <tr>
+        <td align="center">
+          <a href="https://bodaliliyjose.com" style="display: inline-block; background-color: #3E8895; color: #ffffff !important; padding: 12px 28px; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px;">Ver todos los detalles de la boda →</a>
+        </td>
+      </tr>
+    </table>
     <p style="color: #C0A280;">Con cariño, Lili y José</p>
   </div>
 </body>

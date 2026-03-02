@@ -237,9 +237,6 @@ export default function Landing() {
           <h2 className="text-3xl md:text-4xl font-serif text-center text-primary-900 mb-4">
             Dónde Hospedarte
           </h2>
-          <p className="text-center text-primary-800 mb-12 max-w-2xl mx-auto">
-            Hemos conseguido tarifas especiales en hoteles cercanos. Aquí están nuestras mejores recomendaciones para tu estancia.
-          </p>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -400,6 +397,10 @@ export default function Landing() {
               Queremos que se sientan cómodos, por lo que pueden llevar
               tenis o zapatos cómodos.
             </p>
+            <p className="text-primary-700 mt-4 text-sm">
+              Este es un evento para mayores de 15 años, por lo que esperamos
+              entiendas que los pequeños se quedan en casa.
+            </p>
           </div>
         </div>
       </section>
@@ -444,7 +445,7 @@ export default function Landing() {
               <div className="text-left bg-warm-50 rounded-lg p-4 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Banco:</span>
-                  <span className="font-medium text-primary-900">GBM</span>
+                  <span className="font-medium text-primary-900">SANTANDER</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">Titular:</span>
@@ -452,7 +453,7 @@ export default function Landing() {
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-500">CLABE:</span>
-                  <span className="font-medium text-primary-900">601 180 40005057352 9</span>
+                  <span className="font-medium text-primary-900">014 680 60607937439 9</span>
                 </div>
               </div>
             </div>
